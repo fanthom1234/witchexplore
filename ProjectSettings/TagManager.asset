@@ -17,8 +17,8 @@ TagManager:
   - NavMesh
   - BackgroundImage
   - DistantHotspot
-  - 
-  - 
+  - Ingredient
+  - Draggable
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Draggable
+    uniqueID: 2008342363
+    locked: 0
+  - name: Result
+    uniqueID: 3877410977
     locked: 0

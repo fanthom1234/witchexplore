@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6648adb00a035348add74ba8e075087, type: 3}
+  m_Name: Kitchen_RuntimeManager
+  m_EditorClassIdentifier: 
+  AllCakeRecipes:
+  - {fileID: 11400000, guid: b2748fc35b1f52845a77ffe67566b810, type: 2}
+  - {fileID: 11400000, guid: 8c7e23e6216586744bf4c747eca0134b, type: 2}
+  - {fileID: 11400000, guid: d28a5b59913bd5142951456e12e069d1, type: 2}
+  FailRecipe: {fileID: 11400000, guid: 159c4f01cafeaf5459d3054ef91446aa, type: 2}
