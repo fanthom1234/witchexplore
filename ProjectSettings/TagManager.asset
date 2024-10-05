@@ -45,6 +45,9 @@ TagManager:
   - name: Draggable
     uniqueID: 2008342363
     locked: 0
+  - name: Front Prop
+    uniqueID: 1831514267
+    locked: 0
   - name: Result
     uniqueID: 3877410977
     locked: 0

@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class CaravanObject : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer
+    {
+        get
+        {
+            TryGetComponent(out _spriteRenderer);
+            return _spriteRenderer;
+        }
+    }
     private void Awake()
     {
         Initialization();
