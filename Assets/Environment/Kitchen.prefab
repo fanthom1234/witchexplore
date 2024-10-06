@@ -2957,8 +2957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc7799934a8af54fa41d3d78de983b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowResultDuration: 1
-  ResultFadeoutDuration: 0.75
   Fruit: 
   IngredientsInCauldron:
     Fruit: 
@@ -2969,6 +2967,7 @@ MonoBehaviour:
     Sugar: 0
   KitchenRuntimeManagerSO: {fileID: 11400000, guid: d333bca11d02dda4e90be99603324c94, type: 2}
   ResultCakeRenderer: {fileID: 9065343451156160812}
+  CraftingHotSpot: {fileID: 9065343452094826130}
 --- !u!1 &9215881593919117536
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,12 @@ using UnityEngine;
 public struct ObjectHoldEvent
 {
     public HoldableObject Holdable;
+    public float Cooldown;
 
     public ObjectHoldEvent(HoldableObject holdable)
     {
         Holdable = holdable;
+        Cooldown = 1;
     }
 }
 
