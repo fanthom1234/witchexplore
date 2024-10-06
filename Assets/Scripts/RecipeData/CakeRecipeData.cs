@@ -21,6 +21,11 @@ public class Ingredient
     public int Butter; // Does the recipe require ghee?
     public int Sugar; // Does the recipe require sugar?
 
+    public int Count
+    {
+        get { return Flour + Milk + Egg + Butter + Sugar; }
+    }
+
     public void Add(EType type)
     {
         Flour += type == EType.Flour ? 1 : 0;

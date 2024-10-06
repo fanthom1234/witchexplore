@@ -116,6 +116,7 @@ namespace AC
 		protected MatchingInvInteractionData matchingInvInteractionData;
 		private Transform _transform;
 		private string cachedLabel;
+		private 
 
 		#endregion
 

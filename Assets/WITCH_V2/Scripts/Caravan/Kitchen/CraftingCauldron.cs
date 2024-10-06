@@ -47,7 +47,9 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     protected override void Initialization()
     {
         base.Initialization();
-        ResultCakeRenderer.sprite = null;
+        Color c = Color.white;
+        c.a = 0;
+        ResultCakeRenderer.color = c;
     }
 
     protected override void OnObjectEnabled()
@@ -99,18 +101,19 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
         {
             Debug.Log("No fruit added");
         }
-        //// Check if any ingredients have been added to the cauldron.
-        //if (IngredientsInCauldron.Count <= 0)
-        //{
-        //    Debug.Log("No ingredients added");
-        //    return;
-        //}
+        // Check if any ingredients have been added to the cauldron.
+        if (IngredientsInCauldron.Count <= 0)
+        {
+            Debug.Log("No ingredients added");
+            return;
+        }
 
         // Call the CraftCake method from the KitchenRuntimeManagerSO to determine the crafted recipe
         // based on the fruit and the ingredients added.
         CakeRecipeData getCake = KitchenRuntimeManagerSO.CraftCake(Fruit, IngredientsInCauldron);
+        ResultCakeRenderer.sprite = getCake.image;
         // Start the coroutine to show the crafted cake's result, passing the recipe obtained.
-        StartCoroutine(ShowResultCakeRoutine(getCake));
+        //StartCoroutine(ShowResultCakeRoutine(getCake));
         // Clear the cauldron of any fruit and ingredients for the next crafting session.
         ClearCauldron();
     }
