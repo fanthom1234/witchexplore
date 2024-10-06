@@ -3646,7 +3646,7 @@ MonoBehaviour:
     x: 17
     y: 343
     width: 300
-    height: 240
+    height: 191
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 1931833603}
@@ -3662,18 +3662,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 140123285}
-        m_TargetAssemblyTypeName: CraftingCauldron, Assembly-CSharp
-        m_MethodName: ForceAddIngredient
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6966,6 +6954,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1456170951, guid: a3592b32fd3941d4883fb1cb00699c21, type: 3}
+      propertyPath: hotspotName
+      value: Butter
+      objectReference: {fileID: 0}
     - target: {fileID: 1564216766, guid: a3592b32fd3941d4883fb1cb00699c21, type: 3}
       propertyPath: actions.Array.data[0]
       value: 

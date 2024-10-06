@@ -36,7 +36,6 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     //[SerializeField] float ResultFadeoutDuration = .75f; // Time for the fade-out effect.
 
     [Header("Runtime Tracker")]
-    [SerializeField] string Fruit; // Tracks the fruit added to the cauldron.
     [SerializeField] Ingredient IngredientsInCauldron; // List of ingredients added.
 
     [Header("Reference")]
@@ -84,9 +83,9 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     /// <param name="eventType"></param>
     public void OnEventBusTrigger(FruitToCauldronEvent eventType)
     {
-        if (Fruit == NOFRUIT)
+        if (IngredientsInCauldron.Fruit == NOFRUIT)
         {
-            Fruit = eventType.FruitName;
+            IngredientsInCauldron.Fruit = eventType.FruitName;
         }
         else
         {
@@ -119,7 +118,7 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     public void StartCakeCrafting()
     {
         // Check if a fruit has been added to the cauldron.
-        if (Fruit == null)
+        if (IngredientsInCauldron.Fruit == null)
         {
             Debug.Log("No fruit added");
         }
@@ -132,7 +131,7 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
 
         // Call the CraftCake method from the KitchenRuntimeManagerSO to determine the crafted recipe
         // based on the fruit and the ingredients added.
-        CakeRecipeData getCake = KitchenRuntimeManagerSO.CraftCake(Fruit, IngredientsInCauldron);
+        CakeRecipeData getCake = KitchenRuntimeManagerSO.CraftCake(IngredientsInCauldron);
         ResultCakeRenderer.sprite = getCake.image;
         // Clear the cauldron of any fruit and ingredients for the next crafting session.
         ClearCauldron();
@@ -168,7 +167,6 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     /// <exception cref="NotImplementedException"></exception>
     private void ClearCauldron()
     {
-        Fruit = NOFRUIT;
         IngredientsInCauldron.Clear();
     }
 

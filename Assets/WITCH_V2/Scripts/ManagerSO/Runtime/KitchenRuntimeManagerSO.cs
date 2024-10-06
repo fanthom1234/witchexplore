@@ -17,7 +17,7 @@ public class KitchenRuntimeManagerSO : ScriptableObject
     /// <param name="fruit"></param>
     /// <param name="ingredients"></param>
     /// <returns></returns>
-    public CakeRecipeData CraftCake(string fruit, Ingredient ingredients)
+    public CakeRecipeData CraftCake(Ingredient ingredients)
     {
         // Generate a crafting string based on the fruit and the ingredients present in the cauldron.
         string crafting = CakeRecipeData.GenerateCraftingString(ingredients);
