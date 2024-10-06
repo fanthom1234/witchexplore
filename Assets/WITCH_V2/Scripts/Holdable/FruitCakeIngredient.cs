@@ -9,8 +9,22 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
     public string FruitName;
 
     private Rigidbody2D rigidbody2d;
+
     private Hotspot _hotspot;
+    public Hotspot Hotspot
+    {
+        get
+        {
+            if(_hotspot == null)
+            {
+                TryGetComponent(out _hotspot);
+            }
+            return _hotspot;
+        }
+    }
+
     private Vector3 _startPos;
+    private bool _hasFruit;
 
     protected override void OnObjectEnabled()
     {
@@ -52,7 +66,7 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
         rigidbody2d.velocity = Vector2.zero;
         SpriteRenderer.enabled = false;
         transform.position = _startPos;
-        _hotspot.TurnOff();
+        Hotspot.TurnOff();
     }
 
     protected override void OnReleased()
@@ -65,8 +79,38 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
 
     IEnumerator DisableHotspotRoutine()
     {
-        _hotspot.TurnOff();
+        Hotspot.TurnOff();
         yield return new WaitForEndOfFrame();
-        _hotspot.TurnOn();
+        Hotspot.TurnOn();
+    }
+
+    /// <summary>
+    /// Call in ActionList of FruitBasket hotspot
+    /// </summary>
+    public void TryTurnOnHotspot()
+    {
+        if (_hasFruit)
+        {
+            Hotspot.TurnOn();
+        }
+        else
+        {
+            Hotspot.TurnOff();
+        }
+    }
+
+    public void SetFruitData(FruitItemSO fruitItemSO)
+    {
+        if (fruitItemSO == null)
+        {
+            FruitName = "";
+            SpriteRenderer.sprite = null;
+            _hasFruit = false;
+            return;
+        }
+        FruitName = fruitItemSO.DisplayName;
+        SpriteRenderer.sprite = fruitItemSO.sprite;
+        _hasFruit = true;
+        Hotspot.SetName(FruitName, Hotspot.displayLineID);
     }
 }
