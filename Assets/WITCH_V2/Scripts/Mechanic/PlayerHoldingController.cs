@@ -42,7 +42,6 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
     {
         SetHolding(eventType.Holdable);
         OneFramePassed = false;
-            Debug.Log("ssadad");
     }
 
     protected override void OnFrameStart()
@@ -59,7 +58,6 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("sss");
             _currHolding.DoRelease();
         }
     }

@@ -18,10 +18,12 @@ public struct IngredientToCauldronEvent
 public struct FruitToCauldronEvent
 {
     public string FruitName;
+    public FruitCakeIngredient FruitCakeIngredient;
 
-    public FruitToCauldronEvent(string fruit)
+    public FruitToCauldronEvent(FruitCakeIngredient ingredient)
     {
-        FruitName = fruit;
+        FruitName = ingredient.FruitName;
+        FruitCakeIngredient = ingredient;
     }
 }
 
@@ -145,5 +147,14 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     {
         Fruit = NOFRUIT;
         IngredientsInCauldron.Clear();
+    }
+
+    /// <summary>
+    /// Use in OnRelease Interaction of Hold_Milk
+    /// </summary>
+    /// <param name="i"></param>
+    public void ForceAddIngredient(int i)
+    {
+        EventBus.TriggerEvent(new IngredientToCauldronEvent((Ingredient.EType)(i)));
     }
 }

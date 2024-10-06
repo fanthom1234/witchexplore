@@ -1,22 +1,39 @@
-﻿using System;
+﻿using AC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 public class HoldableObject : CaravanObject
 {
-    public bool CanHoldByClicking;
+    [Header("Holdable")]
+    [SerializeField] Interaction OnReleaseInteraction;
 
     private bool _isHolding;
 
-    protected override void OnMouseClick()
+    private void Reset()
     {
-        base.OnMouseClick();
-        if (_isHolding == false && CanHoldByClicking)
+        Hotspot hotspot = null;
+        ActionEvent actionEvent = null;
+        if (TryGetComponent(out hotspot) && hotspot.useButtons.Count > 0 && hotspot.useButtons[0].interaction)
         {
-            DoHold();
+            foreach(AC.Action action in hotspot.useButtons[0].interaction.GetActions())
+            {
+                actionEvent = action as ActionEvent;
+                if (actionEvent != null) 
+                {
+                    return;
+                }
+            }
+            hotspot.useButtons[0].interaction.actions[0] = new ActionEvent();
+            actionEvent = hotspot.useButtons[0].interaction.actions[0] as ActionEvent;
+            actionEvent.unityEvent = new UnityEngine.Events.UnityEvent();
         }
+    }
+
+    protected override void Initialization()
+    {
+        base.Initialization();
     }
 
     public void DoHold()
@@ -42,6 +59,10 @@ public class HoldableObject : CaravanObject
     protected virtual void OnReleased()
     {
         Debug.Log("OnRelease");
+        if (OnReleaseInteraction != null)
+        {
+            OnReleaseInteraction.Interact();
+        }
     }
 
     protected void SetHoldingFalse() 

@@ -17,7 +17,7 @@ public class CauldronBottom : TriggerSensor
         } 
         if (other.gameObject.TryGetComponent<FruitCakeIngredient>(out _ingf))
         {
-            EventBus.TriggerEvent(new FruitToCauldronEvent(_ingf.FruitName));
+            EventBus.TriggerEvent(new FruitToCauldronEvent(_ingf));
         }
     }
 }

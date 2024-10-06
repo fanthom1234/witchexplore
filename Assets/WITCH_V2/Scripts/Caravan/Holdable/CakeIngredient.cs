@@ -9,7 +9,7 @@ public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldr
 
     private Rigidbody2D rigidbody2d;
     private Vector3 _startPos;
-    private Vector3 _hidingPos;
+    private Vector3 _resetPos;
 
     protected override void OnObjectEnabled()
     {
@@ -25,7 +25,15 @@ public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldr
 
     public void OnEventBusTrigger(IngredientToCauldronEvent eventType)
     {
-        Invoke("Hide", .1f);
+        if (eventType.Ingredient == IngredientType)
+        {
+            Invoke("Hide", .1f);
+        }
+    }
+
+    private bool IsEqual(CakeIngredient cakeIngredient)
+    {
+        return this.GetInstanceID() == cakeIngredient.GetInstanceID(); ;
     }
 
     protected override void Initialization()
@@ -33,7 +41,7 @@ public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldr
         base.Initialization();
         TryGetComponent(out rigidbody2d);
         _startPos = transform.position;
-        _hidingPos = transform.position + (Vector3.down * 10);
+        _resetPos = transform.position + (Vector3.down * 10);
         Hide();
     }
 
@@ -42,7 +50,7 @@ public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldr
         rigidbody2d.gravityScale = 0;
         rigidbody2d.velocity = Vector2.zero;
         SpriteRenderer.enabled = false;
-        transform.position = _hidingPos;
+        transform.position = _resetPos;
     }
 
     protected override void OnHolded()
