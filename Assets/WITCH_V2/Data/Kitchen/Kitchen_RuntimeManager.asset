@@ -16,4 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b2748fc35b1f52845a77ffe67566b810, type: 2}
   - {fileID: 11400000, guid: 8c7e23e6216586744bf4c747eca0134b, type: 2}
   - {fileID: 11400000, guid: d28a5b59913bd5142951456e12e069d1, type: 2}
+  - {fileID: 11400000, guid: f98a58c0bdb683a4b89feda832af9522, type: 2}
+  - {fileID: 11400000, guid: 0edc2cb91beed6b48961ea29b2965258, type: 2}
+  - {fileID: 11400000, guid: b85be30838ce4274194059a48ba7a5b8, type: 2}
   FailRecipe: {fileID: 11400000, guid: 159c4f01cafeaf5459d3054ef91446aa, type: 2}

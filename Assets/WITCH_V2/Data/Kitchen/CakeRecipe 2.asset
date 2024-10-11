@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe 2
   m_EditorClassIdentifier: 
   recipeName: 
-  image: {fileID: 21300000, guid: 8ab72e6e633e9c546a2a450d64b1d541, type: 3}
+  ResultBaseCake: {fileID: 11400000, guid: 3ee851af4908ee34db2bdf35d4ad8b40, type: 2}
   RequiredIngredients:
     Fruit: Sassy
     Flour: 2

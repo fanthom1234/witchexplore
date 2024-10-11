@@ -77,4 +77,14 @@ public class CaravanObject : MonoBehaviour
     {
 
     }
+
+    private void OnValidate()
+    {
+        OnInspectorChanged();
+    }
+
+    protected virtual void OnInspectorChanged()
+    {
+
+    }
 }

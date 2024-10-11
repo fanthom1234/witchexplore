@@ -14,7 +14,7 @@ public class UIRecipeData : MonoBehaviour
     public TMP_Text instructions;
 
     private void Start() {
-        ChangeImage(recipeData.image);
+        ChangeImage(recipeData.ResultBaseCake.CakeSprite);
         ingredients.text = recipeData.craftingString;
         instructions.text = recipeData.instructions;
     }

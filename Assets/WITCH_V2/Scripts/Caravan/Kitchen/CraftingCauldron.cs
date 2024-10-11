@@ -42,6 +42,8 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     [SerializeField] KitchenRuntimeManagerSO KitchenRuntimeManagerSO; // Reference to the Kitchen Manager, which contain All Recipe and Crafting Logic.
     [SerializeField] SpriteRenderer ResultCakeRenderer; // Renderer for the resulting cake image.
     [SerializeField] Hotspot CraftingHotSpot; // Hotspot that trigger Crafting Process
+    
+    private Inventory _inventory;
 
     const string NOFRUIT = "";
 
@@ -51,6 +53,7 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
         Color c = Color.white;
         c.a = 0;
         ResultCakeRenderer.color = c;
+        _inventory = Inventory.Instance;
     }
 
     protected override void OnObjectEnabled()
@@ -132,7 +135,8 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
         // Call the CraftCake method from the KitchenRuntimeManagerSO to determine the crafted recipe
         // based on the fruit and the ingredients added.
         CakeRecipeData getCake = KitchenRuntimeManagerSO.CraftCake(IngredientsInCauldron);
-        ResultCakeRenderer.sprite = getCake.image;
+        ResultCakeRenderer.sprite = getCake.ResultBaseCake.CakeSprite;
+        _inventory.AddBaseCake(getCake.ResultBaseCake);
         // Clear the cauldron of any fruit and ingredients for the next crafting session.
         ClearCauldron();
     }

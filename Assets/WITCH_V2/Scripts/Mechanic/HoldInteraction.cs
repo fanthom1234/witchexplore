@@ -20,6 +20,7 @@ public class HoldInteraction : Interaction
     {
         base.Interact();
         // At the frame action list called
+
         HoldableObject.DoHold();
     }
 }

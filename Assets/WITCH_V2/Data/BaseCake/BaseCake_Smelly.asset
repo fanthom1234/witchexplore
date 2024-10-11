@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f45f75afdf72c540948d8eb0a29ee22, type: 3}
-  m_Name: Fru_Salty
+  m_Script: {fileID: 11500000, guid: 840891d807cb7d641a974587aee506aa, type: 3}
+  m_Name: BaseCake_Smelly
   m_EditorClassIdentifier: 
-  DisplayName: Salty
-  sprite: {fileID: 21300000, guid: c4b27aedc442b53489ef0282538c5602, type: 3}
+  CakeSprite: {fileID: 21300000, guid: c20e06c47afcaaa47abbc6356d5909eb, type: 3}

@@ -53,7 +53,7 @@ public class Ingredient
 public class CakeRecipeData : ScriptableObject
 {
     public string recipeName;
-    public Sprite image;
+    public BaseCakeSO ResultBaseCake;
     [Header("Ingredients")]
     public Ingredient RequiredIngredients = new Ingredient();
 

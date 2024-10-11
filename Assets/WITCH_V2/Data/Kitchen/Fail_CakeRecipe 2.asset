@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fail_CakeRecipe 2
   m_EditorClassIdentifier: 
   recipeName: Fail
-  image: {fileID: 21300000, guid: 2826c961f9a4b264fb4644616213299c, type: 3}
+  ResultBaseCake: {fileID: 11400000, guid: 2ef20906b6d72aa4c96a4f8892e0bf7b, type: 2}
   RequiredIngredients:
     Fruit: Fail
     Flour: 0
