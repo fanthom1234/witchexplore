@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MilkCakeIngredient : HoldableObject
 {
+    [SerializeField] float ResetPositionDuration = .4f;
+
     private Vector3 _initialPos;
     private Quaternion _initialRot;
+    private Vector3 _posOnRelease;
 
     protected override void Initialization()
     {
@@ -21,7 +24,18 @@ public class MilkCakeIngredient : HoldableObject
 
     public void ResetPosition()
     {
-        transform.position = _initialPos;
-        transform.rotation = _initialRot;
+        _posOnRelease = transform.position;
+        StartCoroutine(ResetPositionRoutine(ResetPositionDuration));
+    }
+
+    IEnumerator ResetPositionRoutine(float translateDuration)
+    {
+        float t = 0;
+        while (t < translateDuration)
+        {
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime;
+            transform.position = Vector3.Lerp(_posOnRelease, _initialPos, t/translateDuration);
+        }
     }
 }

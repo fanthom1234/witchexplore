@@ -6,6 +6,7 @@ using UnityEngine;
 public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldronEvent>
 {
     public Ingredient.EType IngredientType;
+    [SerializeField] float ReleaseDownForce = 7;
 
     private Rigidbody2D rigidbody2d;
     private Vector3 _startPos;
@@ -64,5 +65,6 @@ public class CakeIngredient : HoldableObject, IEventSubcriber<IngredientToCauldr
         base.OnReleased();
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.gravityScale = 1;
+        rigidbody2d.AddForce(Vector2.down * ReleaseDownForce, ForceMode2D.Impulse);
     }
 }

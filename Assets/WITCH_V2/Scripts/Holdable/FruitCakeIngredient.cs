@@ -7,6 +7,7 @@ using UnityEngine;
 public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldronEvent>
 {
     public string FruitName;
+    [SerializeField] float ReleaseDownForce = 7;
 
     private Rigidbody2D rigidbody2d;
 
@@ -74,6 +75,7 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
         base.OnReleased();
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.gravityScale = 1;
+        rigidbody2d.AddForce(Vector2.down * ReleaseDownForce, ForceMode2D.Impulse);
         StartCoroutine(DisableHotspotRoutine());
     }
 

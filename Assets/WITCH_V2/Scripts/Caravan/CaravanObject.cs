@@ -87,4 +87,14 @@ public class CaravanObject : MonoBehaviour
     {
 
     }
+
+    private void Reset()
+    {
+        OnReset();
+    }
+
+    protected virtual void OnReset()
+    {
+
+    }
 }

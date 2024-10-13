@@ -6,6 +6,10 @@ using UnityEngine.Events;
 
 public class HoldableObject : CaravanObject
 {
+    [Header("Optional Reference")]
+    [SerializeField] SpriteRenderer HoldableRenderer;
+    [SerializeField] protected ReleaseHoldableBound ReleaseArea;
+
     [Header("Holdable")]
     [SerializeField] Interaction OnReleaseInteraction;
 
@@ -13,32 +17,39 @@ public class HoldableObject : CaravanObject
 
     private void Reset()
     {
-        Hotspot hotspot = null;
-        ActionEvent actionEvent = null;
-        if (TryGetComponent(out hotspot) && hotspot.useButtons.Count > 0 && hotspot.useButtons[0].interaction)
-        {
-            foreach(AC.Action action in hotspot.useButtons[0].interaction.GetActions())
-            {
-                actionEvent = action as ActionEvent;
-                if (actionEvent != null) 
-                {
-                    return;
-                }
-            }
-            hotspot.useButtons[0].interaction.actions[0] = new ActionEvent();
-            actionEvent = hotspot.useButtons[0].interaction.actions[0] as ActionEvent;
-            actionEvent.unityEvent = new UnityEngine.Events.UnityEvent();
-        }
+        //Hotspot hotspot = null;
+        //ActionEvent actionEvent = null;
+        //if (TryGetComponent(out hotspot) && hotspot.useButtons.Count > 0 && hotspot.useButtons[0].interaction)
+        //{
+        //    foreach(AC.Action action in hotspot.useButtons[0].interaction.GetActions())
+        //    {
+        //        actionEvent = action as ActionEvent;
+        //        if (actionEvent != null) 
+        //        {
+        //            return;
+        //        }
+        //    }
+        //    hotspot.useButtons[0].interaction.actions[0] = new ActionEvent();
+        //    actionEvent = hotspot.useButtons[0].interaction.actions[0] as ActionEvent;
+        //    actionEvent.unityEvent = new UnityEngine.Events.UnityEvent();
+        //}
     }
 
     protected override void Initialization()
     {
         base.Initialization();
+        if (HoldableRenderer == null)
+        {
+            HoldableRenderer = SpriteRenderer;
+        }
     }
 
     public void DoHold()
     {
-        SpriteRenderer.enabled = true;
+        if (HoldableRenderer)
+        {
+            HoldableRenderer.enabled = true;
+        }
         _isHolding = true;
         EventBus.TriggerEvent(new ObjectHoldEvent(this));
         OnHolded();
@@ -51,9 +62,18 @@ public class HoldableObject : CaravanObject
 
     public void DoRelease()
     {
-        _isHolding = false;
-        EventBus.TriggerEvent(new ObjectHoldEvent(null));
-        OnReleased();
+        if (ReleaseArea == null)
+        {
+            _isHolding = false;
+            EventBus.TriggerEvent(new ObjectHoldEvent(null));
+            OnReleased();
+        }
+        else if (Vector2.Distance(transform.position, ReleaseArea.transform.position) < ReleaseArea.Radius)
+        {
+            _isHolding = false;
+            EventBus.TriggerEvent(new ObjectHoldEvent(null));
+            OnReleased();
+        }
     }
 
     protected virtual void OnReleased()

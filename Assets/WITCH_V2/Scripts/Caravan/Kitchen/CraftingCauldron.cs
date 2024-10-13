@@ -1,6 +1,7 @@
 // This script handles the crafting system, ingredients and fruit are added by observer pattern
 // The system uses event-based architecture to trigger crafting based on the addition of ingredients and fruit.
 using AC;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,7 +93,7 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
         }
         else
         {
-            Debug.Log("Already add fruit, so ignore new one");
+            IngredientsInCauldron.Fruit = eventType.FruitName;
         }
     }
 

@@ -42,7 +42,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Draggable
+  - name: Holdable
     uniqueID: 2008342363
     locked: 0
   - name: Front Prop
