@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeName: Biscuit
   image: {fileID: 21300000, guid: 6945d0d74a977ed468731cd757ed8182, type: 3}
-  ingredients: lemon? \nBiscuit??
-  instructions: idk man
+  Fruit: 
+  NeedFlour: 0
+  NeedGhee: 0
+  NeedGlitter: 0
+  NeedEgg: 0
+  craftingString: 
+  instructions: lorem ipsum

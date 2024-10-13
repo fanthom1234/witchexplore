@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d810d5f55a9c09e4b9ff95b5b39c0eda, type: 3}
+  m_Name: CakeRecipe 3
+  m_EditorClassIdentifier: 
+  recipeName: 
+  ResultBaseCake: {fileID: 11400000, guid: 2ef20906b6d72aa4c96a4f8892e0bf7b, type: 2}
+  RequiredIngredients:
+    Fruit: Starry
+    Flour: 2
+    Milk: 1
+    Egg: 2
+    Butter: 1
+    Sugar: 1
+  craftingString: Starryflourflourmilkeggeggbuttersugar
+  instructions: lorem ipsum

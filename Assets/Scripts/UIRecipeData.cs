@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 public class UIRecipeData : MonoBehaviour
 {
-    public RecipeData recipeData;
+    public CakeRecipeData recipeData;
     public UnityEngine.UI.Image image;
     public TMP_Text ingredients;
     public TMP_Text instructions;
 
     private void Start() {
-        ChangeImage(recipeData.image);
-        ingredients.text = recipeData.ingredients;
+        ChangeImage(recipeData.ResultBaseCake.CakeSprite);
+        ingredients.text = recipeData.craftingString;
         instructions.text = recipeData.instructions;
     }
 

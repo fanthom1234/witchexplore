@@ -8,6 +8,8 @@ public class ItemData : ScriptableObject
 {
     // public Decorator[] decs;
 
-    public String itemName;
+    public string DisplayName;
     public Sprite sprite;
+
+    
 }

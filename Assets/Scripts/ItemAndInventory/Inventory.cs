@@ -1,16 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
-    public static Inventory playerInventory;
-    public bool isPlayerInventory;
     public List<Item> items;
+    public List<BaseCakeSO> baseCakes;
+    public List<FruitItemSO> FruitsInBasket;
 
-    private void Awake() {
-        if (isPlayerInventory)
-            playerInventory = this;
+    public void AddBaseCake(BaseCakeSO baseCake)
+    {
+        baseCakes.Add(baseCake);
     }
-
 }

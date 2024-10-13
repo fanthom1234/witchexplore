@@ -80,7 +80,7 @@ public class UICabinet : MonoBehaviour
         for (int i = 0; i < itemsCount; i++)
         {
             images[i].sprite = items[i].sprite; 
-            images[i].name = items[i]?.itemName;
+            images[i].name = items[i]?.DisplayName;
             images[i].GetComponent<UIItem>().item = items[i];
         }
     }
