@@ -10,7 +10,6 @@ public class KitchenRuntimeManagerSO : ScriptableObject
 {
     [Header("References")]
     public List<CakeRecipeData> AllCakeRecipes; // List of all valid cake recipes.
-    public CakeRecipeData FailRecipe; // Fallback recipe if crafting does not match any valid recipe.
 
     /// <summary>
     /// Crafts a cake based on the fruit and ingredients added to the cauldron.
@@ -30,6 +29,6 @@ public class KitchenRuntimeManagerSO : ScriptableObject
                 return recipeData; // Return the matching recipe.
             }
         }
-        return FailRecipe; // Return the fail recipe if no match is found.
+        return null; // Return the fail recipe if no match is found.
     }
 }

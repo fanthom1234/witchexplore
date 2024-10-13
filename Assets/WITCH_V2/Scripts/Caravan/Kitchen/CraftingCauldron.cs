@@ -39,10 +39,14 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     [Header("Runtime Tracker")]
     [SerializeField] Ingredient IngredientsInCauldron; // List of ingredients added.
 
-    [Header("Reference")]
+    [Header("Asset Reference")]
     [SerializeField] KitchenRuntimeManagerSO KitchenRuntimeManagerSO; // Reference to the Kitchen Manager, which contain All Recipe and Crafting Logic.
+    [Header("Scene Object Reference")]
     [SerializeField] SpriteRenderer ResultCakeRenderer; // Renderer for the resulting cake image.
     [SerializeField] Hotspot CraftingHotSpot; // Hotspot that trigger Crafting Process
+    [Header("Animation Reference")]
+    [SerializeField] Animation Animation;
+    [SerializeField] AnimationClip FailAnimClip;
     
     private Inventory _inventory;
 
@@ -136,10 +140,30 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
         // Call the CraftCake method from the KitchenRuntimeManagerSO to determine the crafted recipe
         // based on the fruit and the ingredients added.
         CakeRecipeData getCake = KitchenRuntimeManagerSO.CraftCake(IngredientsInCauldron);
-        ResultCakeRenderer.sprite = getCake.ResultBaseCake.CakeSprite;
-        _inventory.AddBaseCake(getCake.ResultBaseCake);
+        if (getCake)
+        {
+            OnCraftingSuccess(getCake);
+        }
+        else
+        {
+            OnCraftingFail();
+        }
+
         // Clear the cauldron of any fruit and ingredients for the next crafting session.
         ClearCauldron();
+        CraftingHotSpot.TurnOff();
+    }
+
+    private void OnCraftingFail()
+    {
+        ResultCakeRenderer.sprite = null;
+        Animation.Play(FailAnimClip.name);
+    }
+
+    private void OnCraftingSuccess(CakeRecipeData getCake)
+    {
+        ResultCakeRenderer.sprite = getCake.ResultBaseCake.CakeSprite;
+        _inventory.AddBaseCake(getCake.ResultBaseCake);
     }
 
     ///// <summary>
