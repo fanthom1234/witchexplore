@@ -17,7 +17,6 @@ using UnityEditor;
 
 namespace AC
 {
-
 	[System.Serializable]
 	public class ActionDoHold : Action
 	{
@@ -34,30 +33,10 @@ namespace AC
 		
 		public override float Run ()
 		{
-			/* 
-			 * This function is called when the action is performed.
-			 * 
-			 * The float to return is the time that the game
-			 * should wait before moving on to the next action.
-			 * Return 0f to make the action instantenous.
-			 * 
-			 * For actions that take longer than one frame,
-			 * you can return "defaultPauseTime" to make the game
-			 * re-run this function a short time later. You can
-			 * use the isRunning boolean to check if the action is
-			 * being run for the first time, eg: 
-			 */
+			holdableObject.DoHold();
+			return 0f;
+		
 			
-			if (!isRunning)
-			{
-				isRunning = true;
-				return defaultPauseTime;
-			}
-			else
-			{
-				isRunning = false;
-				return 0f;
-			}
 		}
 
 
@@ -84,6 +63,8 @@ namespace AC
 		public override void ShowGUI ()
 		{
 			// Action-specific Inspector GUI code here
+			holdableObject = (HoldableObject) EditorGUILayout.ObjectField("Holdable:", holdableObject, typeof (HoldableObject), true);
+
 		}
 		
 
