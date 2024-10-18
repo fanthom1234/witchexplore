@@ -26,18 +26,18 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
 
 
     private Inventory _inventory;
-    private List<Image> _items;
+    private List<DecorationButtonPanel> _decPanels;
 
     protected override void Initialization()
     {
         base.Initialization();
         _inventory = Inventory.Instance;
-        _items = new List<Image>();
-        foreach (Image image in GridLayoutGroup.GetComponentsInChildren<Image>())
+        _decPanels = new List<DecorationButtonPanel>();
+        foreach (DecorationButtonPanel panel in GridLayoutGroup.GetComponentsInChildren<DecorationButtonPanel>())
         {
-            if (image != GridLayoutGroup)
+            if (panel != GridLayoutGroup)
             {
-                _items.Add(image);
+                _decPanels.Add(panel);
             }
         }
     }
@@ -82,19 +82,36 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
 
     private void PopulateInventory()
     {
-        for (int i = 0; i < _items.Count; i++)
+        if (_inventory.decorations.Count > _decPanels.Count)
         {
-            Image ite = _items[i];
-            Debug.Log("Compare " + i + " >= " + _inventory.baseCakes.Count);
-            if (i >= _inventory.baseCakes.Count)
+            for (int i = 0; i < _inventory.decorations.Count - _decPanels.Count; i++) 
             {
-                ite.gameObject.SetActive(false);
+                _decPanels.Add(Instantiate(_decPanels[0], _decPanels[0].transform.parent));
+            }
+        }
+        else if (_inventory.decorations.Count < _decPanels.Count)
+        {
+            for (int i = 0; i < _decPanels.Count - _inventory.decorations.Count; i++)
+            {
+                Destroy(_decPanels[0].gameObject);
+            }
+            _decPanels.RemoveAll(p => p == null);
+        }
+
+        DecorationButtonPanel currPaenl;
+        for (int i = 0; i < _decPanels.Count; i++)
+        {
+            currPaenl = _decPanels[i];
+            Debug.Log("Compare " + i + " >= " + _inventory.decorations.Count);
+            if (i >= _inventory.decorations.Count)
+            {
+                currPaenl.HidePanel();
             }
             else
             {
-                Debug.Log("set picture" + ite.name);
-                ite.gameObject.SetActive(true);
-                ite.sprite = _inventory.baseCakes[i].CakeSprite;
+                Debug.Log("set picture" + currPaenl.name);
+                currPaenl.ShowPanel();
+                currPaenl.SetImageSprite(_inventory.decorations[i].sprite);
             }
         }
         
