@@ -28,7 +28,16 @@ public struct FruitToCauldronEvent
         FruitCakeIngredient = ingredient;
     }
 }
+// Evebt struct representing a cake got crafted
+public struct CakeCraftedEvent
+{
+    public BaseCakeSO Result;
 
+    public CakeCraftedEvent(BaseCakeSO resultBaseCake)
+    {
+        this.Result = resultBaseCake;
+    }
+}
 // CraftingCauldron class that subscribes to ingredient and fruit events to manage the crafting process.
 public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauldronEvent>, IEventSubcriber<FruitToCauldronEvent>, IEventSubcriber<ObjectHoldEvent>
 {
@@ -164,6 +173,7 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     {
         ResultCakeRenderer.sprite = getCake.ResultBaseCake.CakeSprite;
         _inventory.AddBaseCake(getCake.ResultBaseCake);
+        EventBus.TriggerEvent(new CakeCraftedEvent(getCake.ResultBaseCake));
     }
 
     ///// <summary>
