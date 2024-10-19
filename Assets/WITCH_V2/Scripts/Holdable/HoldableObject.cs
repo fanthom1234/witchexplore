@@ -1,4 +1,5 @@
 ﻿using AC;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,11 @@ using UnityEngine.Events;
 
 public class HoldableObject : CaravanObject
 {
-    [Header("Optional Reference")]
-    [SerializeField] SpriteRenderer HoldableRenderer;
-    [SerializeField] protected ReleaseHoldableBound ReleaseArea;
+    [Header("Object Reference")]
+    [SerializeField] protected SpriteRenderer HoldableRenderer;
 
-    [Header("Holdable")]
+    [Header("Optional Reference")]
+    [SerializeField] protected ReleaseHoldableBound ReleaseArea;
     [SerializeField] Interaction OnReleaseInteraction;
 
     private bool _isHolding;

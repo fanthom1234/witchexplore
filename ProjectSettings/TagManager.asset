@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DecoratingCake
+    uniqueID: 722078137
+    locked: 0
   - name: Holdable
     uniqueID: 2008342363
     locked: 0
