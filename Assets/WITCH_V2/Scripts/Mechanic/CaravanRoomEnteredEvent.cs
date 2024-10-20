@@ -10,6 +10,9 @@ public class CaravanRoom
         Kitchen,
         Decoration,
         MainRoom,
+        Garden,
+        Order,
+        MainMenu
     }
 }
 
