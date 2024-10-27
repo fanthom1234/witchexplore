@@ -27,6 +27,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
 
     private Inventory _inventory;
     private List<DecorationButtonPanel> _decPanels;
+    private ReleaseHoldableBound _HoldReleaseBound;
 
     protected override void Initialization()
     {
@@ -40,6 +41,15 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
                 _decPanels.Add(panel);
             }
         }
+        foreach (ReleaseHoldableBound bound in FindObjectsByType<ReleaseHoldableBound>(FindObjectsSortMode.None))
+        {
+            if (bound.name.StartsWith("Area - Decoration Place Bound"))
+            {
+                _HoldReleaseBound = bound;
+                return;
+            }
+        }
+        
     }
 
     protected override void OnObjectEnabled()
@@ -64,22 +74,6 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         }
     }
 
-    //private void UpdateFromInventory()
-    //{
-    //    for (int i = 0; i < Markers.Length; i++) 
-    //    {
-    //        if (Markers[i] != null && i < _inventory.baseCakes.Count)
-    //        {
-    //            HoldableObject holdableObject = Instantiate(BaseCakePrefab, Markers[i].transform.position, Quaternion.identity);
-    //            SpriteRenderer spriteRenderer;
-    //            if (holdableObject.TryGetComponent<SpriteRenderer>(out spriteRenderer))
-    //            {
-    //                spriteRenderer.sprite = _inventory.baseCakes[i].CakeSprite;
-    //            }
-    //        }
-    //    }
-    //}
-
     private void PopulateInventory()
     {
         if (_inventory.decorations.Count > _decPanels.Count)
@@ -102,6 +96,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         for (int i = 0; i < _decPanels.Count; i++)
         {
             currPaenl = _decPanels[i];
+            currPaenl.SetDecorationReleaseBound(_HoldReleaseBound);
             Debug.Log("Compare " + i + " >= " + _inventory.decorations.Count);
             if (i >= _inventory.decorations.Count)
             {
