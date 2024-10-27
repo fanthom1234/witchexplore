@@ -58,6 +58,14 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
             OneFramePassed = true;
             return;
         }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            _currHolding.DoScrollWheel(1);
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < -0f) // backwards
+        {
+            _currHolding.DoScrollWheel(-1);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             _currHolding.DoRelease();

@@ -66,7 +66,6 @@ public class HoldableObject : CaravanObject
     protected virtual void OnReleased()
     {
         StartCoroutine(CooldownRoutine());
-        Debug.Log("OnRelease");
         if (OnReleaseInteraction != null)
         {
             OnReleaseInteraction.Interact();
@@ -83,5 +82,15 @@ public class HoldableObject : CaravanObject
     protected void SetHoldingFalse() 
     {
         _isHolding = false;
+    }
+
+    public void DoScrollWheel(int increment)
+    {
+        OnScrollWheel(increment);
+    }
+
+    protected virtual void OnScrollWheel(int increment)
+    {
+
     }
 }
