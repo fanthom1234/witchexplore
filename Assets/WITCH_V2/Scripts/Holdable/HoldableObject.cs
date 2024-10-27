@@ -16,25 +16,7 @@ public class HoldableObject : CaravanObject
 
     private bool _isHolding;
 
-    private void Reset()
-    {
-        //Hotspot hotspot = null;
-        //ActionEvent actionEvent = null;
-        //if (TryGetComponent(out hotspot) && hotspot.useButtons.Count > 0 && hotspot.useButtons[0].interaction)
-        //{
-        //    foreach(AC.Action action in hotspot.useButtons[0].interaction.GetActions())
-        //    {
-        //        actionEvent = action as ActionEvent;
-        //        if (actionEvent != null) 
-        //        {
-        //            return;
-        //        }
-        //    }
-        //    hotspot.useButtons[0].interaction.actions[0] = new ActionEvent();
-        //    actionEvent = hotspot.useButtons[0].interaction.actions[0] as ActionEvent;
-        //    actionEvent.unityEvent = new UnityEngine.Events.UnityEvent();
-        //}
-    }
+    public bool _isOnOneFrameCooldown { get; private set; }
 
     protected override void Initialization()
     {
@@ -47,6 +29,10 @@ public class HoldableObject : CaravanObject
 
     public void DoHold()
     {
+        if (_isOnOneFrameCooldown)
+        {
+            return;
+        }
         if (HoldableRenderer)
         {
             HoldableRenderer.enabled = true;
@@ -79,11 +65,19 @@ public class HoldableObject : CaravanObject
 
     protected virtual void OnReleased()
     {
+        StartCoroutine(CooldownRoutine());
         Debug.Log("OnRelease");
         if (OnReleaseInteraction != null)
         {
             OnReleaseInteraction.Interact();
         }
+    }
+
+    IEnumerator CooldownRoutine()
+    {
+        _isOnOneFrameCooldown = true;
+        yield return new WaitForEndOfFrame();
+        _isOnOneFrameCooldown = false;
     }
 
     protected void SetHoldingFalse() 
