@@ -69,7 +69,6 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
     {
         if (eventType.ToRoom == CaravanRoom.ERoom.Decoration)
         {
-            Debug.Log("Callpop");
             PopulateInventory();
         }
     }
@@ -107,6 +106,5 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
                 currPaenl.SetImageSprite(_inventory.decorations[i].sprite);
             }
         }
-        
     }
 }

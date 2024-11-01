@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4444422220845452519}
-  - component: {fileID: 7843300931075462755}
+  - component: {fileID: 4075021993327720544}
   m_Layer: 0
   m_Name: 'Hold_Decoration_Base: Use'
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Transform:
   m_Father: {fileID: 6862232502176574248}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7843300931075462755
+--- !u!114 &4075021993327720544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4444422220845879495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ded1fc3c5a0536469fb7964ea75f0a4, type: 3}
+  m_Script: {fileID: 11500000, guid: efe1c8ccb90a4df4c8a0e365f9f5fe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actions: []
@@ -143,7 +143,7 @@ MonoBehaviour:
   syncParamValues: 1
   groups: []
   backupData: []
-  HoldableObject: {fileID: 2799204288722229595}
+  Decoration: {fileID: 2799204288722229595}
 --- !u!1 &6862232502176574252
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +196,7 @@ MonoBehaviour:
   ReleaseArea: {fileID: 0}
   OnReleaseInteraction: {fileID: 0}
   RotatingAngle: 45
+  IsFlip: 0
 --- !u!114 &6331841831358280351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +238,7 @@ MonoBehaviour:
     parameterID: -1
     invParameterID: -1
   useButtons:
-  - interaction: {fileID: 7843300931075462755}
+  - interaction: {fileID: 4075021993327720544}
     assetFile: {fileID: 11400000, guid: 91d90fb38f777204eb27cea2b53e9071, type: 2}
     customScriptObject: {fileID: 0}
     customScriptFunction: 
