@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 3826492947
+    locked: 0
   - name: DecoratingCake
     uniqueID: 722078137
     locked: 0
@@ -54,6 +57,12 @@ TagManager:
   - name: Front Prop
     uniqueID: 1831514267
     locked: 0
+  - name: Front UI
+    uniqueID: 2993993609
+    locked: 0
   - name: Result
     uniqueID: 3877410977
+    locked: 0
+  - name: Holdable - Front
+    uniqueID: 4033565253
     locked: 0

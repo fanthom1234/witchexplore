@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseUIPanel : CaravanObject
 {
     public bool InstantHideOnInitial = false;
-    public bool InstantAlphaOnEnable = true;
+    [FormerlySerializedAs("InstantAlphaOnEnable")]
+    public bool InstantAlphaOnShowing = true;
 
     public bool IsShowing { get; protected set; }
 
@@ -113,7 +115,7 @@ public class BaseUIPanel : CaravanObject
 
     protected virtual void OnShowingPanel()
     {
-        if (InstantAlphaOnEnable)
+        if (InstantAlphaOnShowing)
         {
             InstantSetAlpha(1);
         }
@@ -121,7 +123,7 @@ public class BaseUIPanel : CaravanObject
 
     protected virtual void OnHidingPanel()
     {
-        if (InstantAlphaOnEnable)
+        if (InstantAlphaOnShowing)
         {
             InstantSetAlpha(0);
         }

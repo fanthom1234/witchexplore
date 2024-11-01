@@ -27,7 +27,7 @@ public class HoldableSpawningController : MonoBehaviour
         _newHoldable.SetDecorationReleaseBound(releaseHoldableBound);
         _newHoldable.DoHold();
 
-        if (sortingLayerName.StartsWith("Holdable - Decoration"))
+        if (_newHoldable as Decoration && sortingLayerName.StartsWith("Holdable - Decoration"))
         {
             LayerToSpawnedDecorations.Add(_newHoldable);
             _newHoldable.SetSortingLayer(sortingLayerName, LayerToSpawnedDecorations.Count);

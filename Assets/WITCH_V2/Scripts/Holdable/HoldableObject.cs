@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class HoldableObject : CaravanObject
 {
+    [Header("Holdable Setting")]
+    public bool UseFrontMostLayerOnHold = true;
     [Header("Object Reference")]
     public SpriteRenderer HoldableRenderer;
 
@@ -37,6 +39,10 @@ public class HoldableObject : CaravanObject
         {
             HoldableRenderer.enabled = true;
         }
+        if (UseFrontMostLayerOnHold)
+        {
+            HoldableRenderer.sortingLayerName = "Holdable - Front";
+        }
         _isHolding = true;
         EventBus.TriggerEvent(new ObjectHoldEvent(this));
         OnHolded();
@@ -55,7 +61,7 @@ public class HoldableObject : CaravanObject
             EventBus.TriggerEvent(new ObjectHoldEvent(null));
             OnReleased();
         }
-        else if (Vector2.Distance(transform.position, ReleaseArea.transform.position) < ReleaseArea.Radius)
+        else if (ReleaseArea.CheckIsObjectOnBound(transform.position))
         {
             _isHolding = false;
             EventBus.TriggerEvent(new ObjectHoldEvent(null));

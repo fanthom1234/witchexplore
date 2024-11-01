@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed12b1190b703194e8bf0ef39b067843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseFrontMostLayerOnHold: 1
   HoldableRenderer: {fileID: 552197341826982198}
   ReleaseArea: {fileID: 0}
   OnReleaseInteraction: {fileID: 0}

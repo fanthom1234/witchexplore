@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ReleaseHoldableBound : MonoBehaviour
 {
-    public float Radius;
+    [SerializeField] float Radius;
+
+    public bool CheckIsObjectOnBound(Vector3 objectPos)
+    {
+        return Vector2.Distance(objectPos, this.transform.position) < Radius;
+    }
 
     private void OnDrawGizmos()
     {

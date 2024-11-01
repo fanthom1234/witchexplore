@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class DecorationAdjustmentPanel : BaseUIPanel, IEventSubcriber<DecorationClickEvent>
 {
+    [Header("Reference")]
+    public Vector2 OffsetFromDecoration;
+    [Header("Reference")]
     public Button[] Buttons;
 
     private Decoration _target;
@@ -62,6 +66,8 @@ public class DecorationAdjustmentPanel : BaseUIPanel, IEventSubcriber<Decoration
             _target = null;
         }
         _target = eventType.Decoration;
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, _target.transform.position);
+        RectTransform.anchoredPosition = (Vector2)_target.transform.InverseTransformPoint(screenPoint) + OffsetFromDecoration;
         ShowPanel();
     }
 }

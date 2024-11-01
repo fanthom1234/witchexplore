@@ -27,7 +27,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
 
     private Inventory _inventory;
     private List<DecorationButtonPanel> _decPanels;
-    private ReleaseHoldableBound _HoldReleaseBound;
+    private ReleaseHoldableBound _holdReleaseBound;
 
     protected override void Initialization()
     {
@@ -45,7 +45,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         {
             if (bound.name.StartsWith("Area - Decoration Place Bound"))
             {
-                _HoldReleaseBound = bound;
+                _holdReleaseBound = bound;
                 return;
             }
         }
@@ -95,7 +95,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         for (int i = 0; i < _decPanels.Count; i++)
         {
             currPaenl = _decPanels[i];
-            currPaenl.SetDecorationReleaseBound(_HoldReleaseBound);
+            currPaenl.SetDecorationReleaseBound(_holdReleaseBound);
             if (i >= _inventory.decorations.Count)
             {
                 currPaenl.HidePanel();
