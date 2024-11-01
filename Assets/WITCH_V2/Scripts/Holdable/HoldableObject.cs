@@ -89,7 +89,17 @@ public class HoldableObject : CaravanObject
         OnScrollWheel(increment);
     }
 
+    public void DoRightMouseDown()
+    {
+        OnRightMouseDown();
+    }
+
     protected virtual void OnScrollWheel(int increment)
+    {
+
+    }
+
+    protected virtual void OnRightMouseDown()
     {
 
     }

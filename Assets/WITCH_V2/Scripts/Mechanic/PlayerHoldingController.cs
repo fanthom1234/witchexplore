@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
     private Vector3 _mousePosition;
 
     public bool OneFramePassed;
+
+    public bool CurrentHolding { get; internal set; }
 
     protected override void OnObjectEnabled()
     {
@@ -58,13 +61,17 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
             OneFramePassed = true;
             return;
         }
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // scroll forward
         {
             _currHolding.DoScrollWheel(1);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") < -0f) // backwards
+        if (Input.GetAxis("Mouse ScrollWheel") < -0f) // scroll backwards
         {
             _currHolding.DoScrollWheel(-1);
+        }
+        if (Input.GetMouseButtonDown(1)) // right mouse down
+        {
+            _currHolding.DoRightMouseDown();
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -88,5 +95,14 @@ public class PlayerHoldingController : CaravanObject, IEventSubcriber<ObjectHold
 
         // Smoothly move the object to the mouse position using Lerp
         _currHolding.transform.position = Vector2.Lerp(_currHolding.transform.position, targetPosition, FollowSpeed);
+    }
+
+    public void TryDestroyHolding()
+    {
+        if (_currHolding != null)
+        {
+            Destroy(_currHolding.gameObject);
+            _currHolding = null;
+        }
     }
 }

@@ -97,14 +97,12 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         {
             currPaenl = _decPanels[i];
             currPaenl.SetDecorationReleaseBound(_HoldReleaseBound);
-            Debug.Log("Compare " + i + " >= " + _inventory.decorations.Count);
             if (i >= _inventory.decorations.Count)
             {
                 currPaenl.HidePanel();
             }
             else
             {
-                Debug.Log("set picture" + currPaenl.name);
                 currPaenl.ShowPanel();
                 currPaenl.SetImageSprite(_inventory.decorations[i].sprite);
             }

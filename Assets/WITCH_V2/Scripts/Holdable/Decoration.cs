@@ -7,6 +7,8 @@ public class Decoration : HoldableObject
 {
     public float RotatingAngle = 45;
 
+    private static int numberOfLayer = 4;
+
     public void SetDecorationSprite(Sprite sprite)
     {
         HoldableRenderer.sprite = sprite;
@@ -16,5 +18,11 @@ public class Decoration : HoldableObject
     {
         base.OnScrollWheel(increment);
         transform.rotation *= Quaternion.AngleAxis(increment * RotatingAngle, Vector3.forward);
+    }
+
+    protected override void OnRightMouseDown()
+    {
+        base.OnRightMouseDown();
+        HoldableRenderer.sortingOrder = (HoldableRenderer.sortingOrder + 1) % numberOfLayer;
     }
 }
