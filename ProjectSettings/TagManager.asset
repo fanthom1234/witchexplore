@@ -48,6 +48,9 @@ TagManager:
   - name: Holdable
     uniqueID: 2008342363
     locked: 0
+  - name: Holdable - Decoration
+    uniqueID: 1049106133
+    locked: 0
   - name: Front Prop
     uniqueID: 1831514267
     locked: 0

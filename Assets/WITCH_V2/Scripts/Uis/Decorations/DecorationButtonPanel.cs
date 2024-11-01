@@ -10,6 +10,7 @@ public class DecorationButtonPanel : BaseButtonPanel
     [SerializeField] Decoration HoldDecorationPrefab;
     
     private PlayerHoldingController _playerHoldingController;
+    private HoldableSpawningController HoldableSpawningController;
 
     private Decoration _currHold;
     private ReleaseHoldableBound _releaseBound;
@@ -18,6 +19,7 @@ public class DecorationButtonPanel : BaseButtonPanel
     {
         base.Initialization();
         _playerHoldingController = CoreGameManager.Instance.PlayerHoldingController;
+        HoldableSpawningController = CoreGameManager.Instance.HoldableSpawningController;
     }
 
     public void SetImageSprite(Sprite sprite)
@@ -29,11 +31,8 @@ public class DecorationButtonPanel : BaseButtonPanel
     {
         base.OnClick();
         _playerHoldingController.TryDestroyHolding();
-
-        _currHold = Instantiate(HoldDecorationPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as Decoration;
-        _currHold.SetDecorationReleaseBound(_releaseBound);
+        _currHold = HoldableSpawningController.SpawnHoldable(HoldDecorationPrefab, _releaseBound, "Holdable - Decoration") as Decoration;
         _currHold.SetDecorationSprite(DecoraionImage.sprite);
-        _currHold.DoHold();
     }
 
     public void SetDecorationReleaseBound(ReleaseHoldableBound holdReleaseBound)

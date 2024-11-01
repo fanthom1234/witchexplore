@@ -7,7 +7,13 @@ public class Decoration : HoldableObject
 {
     public float RotatingAngle = 45;
 
-    private static int numberOfLayer = 4;
+    private HoldableSpawningController _spawningController;
+
+    protected override void Initialization()
+    {
+        base.Initialization();
+        _spawningController = CoreGameManager.Instance.HoldableSpawningController;
+    }
 
     public void SetDecorationSprite(Sprite sprite)
     {
@@ -23,6 +29,6 @@ public class Decoration : HoldableObject
     protected override void OnRightMouseDown()
     {
         base.OnRightMouseDown();
-        HoldableRenderer.sortingOrder = (HoldableRenderer.sortingOrder + 1) % numberOfLayer;
+        _spawningController.ShiftLayer(this, -1);
     }
 }

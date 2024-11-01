@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class HoldableObject : CaravanObject
 {
     [Header("Object Reference")]
-    [SerializeField] protected SpriteRenderer HoldableRenderer;
+    public SpriteRenderer HoldableRenderer;
 
     [Header("Optional Reference")]
     [SerializeField] protected ReleaseHoldableBound ReleaseArea;
@@ -107,5 +107,11 @@ public class HoldableObject : CaravanObject
     public void SetDecorationReleaseBound(ReleaseHoldableBound releaseBound)
     {
         ReleaseArea = releaseBound;
+    }
+
+    public void SetSortingLayer(string sortingLayerName, int sortingOrder)
+    {
+        HoldableRenderer.sortingLayerName = sortingLayerName;
+        HoldableRenderer.sortingOrder = sortingOrder;
     }
 }
