@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Decor_Shitake
   m_EditorClassIdentifier: 
   DisplayName: Frogskewer
-  sprite: {fileID: 21300000, guid: 51c9931b8ddd807409609a8913c249c6, type: 3}
+  Sprite: {fileID: 21300000, guid: 51c9931b8ddd807409609a8913c249c6, type: 3}
+  Type: 0
+  Size: 1

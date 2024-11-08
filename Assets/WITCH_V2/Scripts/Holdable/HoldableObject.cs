@@ -7,8 +7,6 @@ using UnityEngine.Events;
 
 public class HoldableObject : CaravanObject
 {
-    [Header("Holdable Setting")]
-    public bool UseFrontMostLayerOnHold = true;
     [Header("Object Reference")]
     public SpriteRenderer HoldableRenderer;
 
@@ -17,6 +15,7 @@ public class HoldableObject : CaravanObject
     [SerializeField] Interaction OnReleaseInteraction;
 
     private bool _isHolding;
+    private Vector3 _layeredPos;
 
     public bool _isOnOneFrameCooldown { get; private set; }
 
@@ -38,10 +37,6 @@ public class HoldableObject : CaravanObject
         if (HoldableRenderer)
         {
             HoldableRenderer.enabled = true;
-        }
-        if (UseFrontMostLayerOnHold)
-        {
-            HoldableRenderer.sortingLayerName = "Holdable - Front";
         }
         _isHolding = true;
         EventBus.TriggerEvent(new ObjectHoldEvent(this));
@@ -83,6 +78,12 @@ public class HoldableObject : CaravanObject
         _isOnOneFrameCooldown = true;
         yield return new WaitForEndOfFrame();
         _isOnOneFrameCooldown = false;
+        OnAfterReleaseCooldown();
+    }
+
+    protected virtual void OnAfterReleaseCooldown()
+    {
+
     }
 
     protected void SetHoldingFalse() 
@@ -119,5 +120,8 @@ public class HoldableObject : CaravanObject
     {
         HoldableRenderer.sortingLayerName = sortingLayerName;
         HoldableRenderer.sortingOrder = sortingOrder;
+        _layeredPos = HoldableRenderer.transform.position;
+        _layeredPos.z = sortingOrder;
+        HoldableRenderer.transform.position = _layeredPos;
     }
 }

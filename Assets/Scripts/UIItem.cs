@@ -12,7 +12,7 @@ public class UIItem : MonoBehaviour
 
     public void ReplacePlaceholder()
     {
-        cabinet.ReplacePlaceholder(item.sprite);
+        cabinet.ReplacePlaceholder(item.Sprite);
 
         shop.itemComponent = this.gameObject;
         shop.item = this.item;

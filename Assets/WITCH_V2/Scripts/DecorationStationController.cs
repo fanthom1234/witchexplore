@@ -103,7 +103,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
             else
             {
                 currPaenl.ShowPanel();
-                currPaenl.SetImageSprite(_inventory.decorations[i].sprite);
+                currPaenl.SetDecoration(_inventory.decorations[i]);
             }
         }
     }

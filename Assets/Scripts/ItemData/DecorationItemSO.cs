@@ -14,4 +14,6 @@ public class DecorationItemSO : ItemData
     }
 
     public EDecorationType Type;
+    public float Size = 1.5f;
+
 }

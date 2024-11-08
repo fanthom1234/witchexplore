@@ -13,7 +13,7 @@ public class DecorationItemSOEditor : Editor
 
     public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
     {
-        if (item.sprite != null)
+        if (item.Sprite != null)
         {
             Type t = GetType("UnityEditor.SpriteUtility");
             if (t != null)
@@ -21,7 +21,7 @@ public class DecorationItemSOEditor : Editor
                 MethodInfo method = t.GetMethod("RenderStaticPreview", new[] { typeof(Sprite), typeof(Color), typeof(int), typeof(int) });
                 if (method != null)
                 {
-                    object ret = method.Invoke("RenderStaticPreview", new object[] { item.sprite, Color.white, width, height });
+                    object ret = method.Invoke("RenderStaticPreview", new object[] { item.Sprite, Color.white, width, height });
                     if (ret is Texture2D)
                         return ret as Texture2D;
                 }

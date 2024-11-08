@@ -14,14 +14,14 @@ public class DecorationAdjustmentPanel : BaseUIPanel, IEventSubcriber<Decoration
 
     private enum EAdjustment
     {
+        Move,
         Rotate,
         RotateR,
         Flip,
         Duplicate,
-        BringFront,
         BringBack,
+        BringFront,
         Delete,
-        Move,
     }
 
     protected override void OnObjectEnabled()
@@ -43,11 +43,14 @@ public class DecorationAdjustmentPanel : BaseUIPanel, IEventSubcriber<Decoration
         Buttons[(int)EAdjustment.RotateR].onClick.AddListener(() => _target?.Rotate(-1));
         
         Buttons[(int)EAdjustment.Flip].onClick.AddListener(() => _target?.Flip());
-        //Buttons[(int)EAdjustment.Duplicate].onClick.AddListener());
+
+        Buttons[(int)EAdjustment.Duplicate].onClick.AddListener(() => _target?.Duplicate());
+        Buttons[(int)EAdjustment.Duplicate].onClick.AddListener(() => HidePanel());
 
         Buttons[(int)EAdjustment.BringFront].onClick.AddListener(() => _target?.ShiftLayer(1));
         Buttons[(int)EAdjustment.BringBack].onClick.AddListener(() => _target?.ShiftLayer(-1));
 
+        Buttons[(int)EAdjustment.Delete].onClick.AddListener(() => _target?.Delete());
         Buttons[(int)EAdjustment.Delete].onClick.AddListener(() => HidePanel());
 
         Buttons[(int)EAdjustment.Move].onClick.AddListener(() => _target?.DoHold()); 

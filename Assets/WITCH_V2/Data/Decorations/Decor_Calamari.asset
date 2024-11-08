@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Decor_Calamari
   m_EditorClassIdentifier: 
   DisplayName: Calamari
-  sprite: {fileID: 21300000, guid: cf87f78b1e27f564fb765d765ec02aaa, type: 3}
+  Sprite: {fileID: 21300000, guid: cf87f78b1e27f564fb765d765ec02aaa, type: 3}
+  Type: 0
+  Size: 1

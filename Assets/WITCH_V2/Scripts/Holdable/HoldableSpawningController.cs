@@ -37,6 +37,20 @@ public class HoldableSpawningController : MonoBehaviour
         return _newHoldable;
     }
 
+    public void Delete(HoldableObject tobeDestroy, int sortingOrder, string sortingLayerName)
+    {
+        if (tobeDestroy as Decoration && sortingLayerName.StartsWith("Holdable - Decoration"))
+        {
+            LayerToSpawnedDecorations.Remove(tobeDestroy);
+            for (int i = 0; i < LayerToSpawnedDecorations.Count; i++)
+            {
+                LayerToSpawnedDecorations[i].SetSortingLayer("Holdable - Decoration", i + 1);
+            }
+        }
+        
+        Destroy(tobeDestroy.gameObject);
+    }
+
     public void ShiftLayer(HoldableObject holdable, int increment)
     {
         if (holdable.HoldableRenderer.sortingLayerName.StartsWith("Holdable - Decoration") == false)

@@ -111,7 +111,7 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
             return;
         }
         FruitName = fruitItemSO.DisplayName;
-        SpriteRenderer.sprite = fruitItemSO.sprite;
+        SpriteRenderer.sprite = fruitItemSO.Sprite;
         _hasFruit = true;
         Hotspot.SetName(FruitName, Hotspot.displayLineID);
     }
