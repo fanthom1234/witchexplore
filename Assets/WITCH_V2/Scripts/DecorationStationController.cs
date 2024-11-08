@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEnteredEvent>
@@ -23,17 +24,35 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
     public HoldableObject BaseCakePrefab;
     [Header("Sceen Object Reference")]
     public GridLayoutGroup GridLayoutGroup;
+    public UnityEngine.UI.Button FinishButton;
 
 
     private Inventory _inventory;
     private List<DecorationButtonPanel> _decPanels;
     private ReleaseHoldableBound _holdReleaseBound;
 
+    protected override void OnObjectEnabled()
+    {
+        base.OnObjectEnabled();
+        EventBusRegister.EventBusSubcribe(this);
+    }
+
+    protected override void OnObjectDisable()
+    {
+        base.OnObjectDisable();
+        EventBusRegister.EventBusUnscribe(this);
+    }
+
     protected override void Initialization()
     {
         base.Initialization();
         _inventory = Inventory.Instance;
         _decPanels = new List<DecorationButtonPanel>();
+
+        // Set Up Event of Buttons
+        FinishButton.onClick.AddListener(() => InvokeFinishAndSell());
+
+        // Get existing decoration panel
         foreach (DecorationButtonPanel panel in GridLayoutGroup.GetComponentsInChildren<DecorationButtonPanel>())
         {
             if (panel != GridLayoutGroup)
@@ -41,6 +60,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
                 _decPanels.Add(panel);
             }
         }
+        // Find appropiate are to drop decoration
         foreach (ReleaseHoldableBound bound in FindObjectsByType<ReleaseHoldableBound>(FindObjectsSortMode.None))
         {
             if (bound.name.StartsWith("Area - Decoration Place Bound"))
@@ -49,20 +69,11 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
                 return;
             }
         }
-        
     }
 
-    protected override void OnObjectEnabled()
+    private void InvokeFinishAndSell()
     {
-        base.OnObjectEnabled();
-        EventBusRegister.EventBusSubcribe(this);
-        //UpdateFromInventory();
-    }
-
-    protected override void OnObjectDisable()
-    {
-        base.OnObjectDisable();
-        EventBusRegister.EventBusUnscribe(this);
+        EventBus.TriggerEvent(new CakeSellEvent());
     }
 
     public void OnEventBusTrigger(RoomEnteredEvent eventType)

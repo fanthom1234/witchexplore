@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,4 +17,17 @@ public class DecorationItemSO : ItemData
     public EDecorationType Type;
     public float Size = 1.5f;
 
+    [Flags]
+    public enum ETag
+    {
+        None,
+        Pizza,
+        Mushroom,
+        Vegetable,
+        Fruit,
+
+        
+    }
+
+    public ETag Tags;
 }

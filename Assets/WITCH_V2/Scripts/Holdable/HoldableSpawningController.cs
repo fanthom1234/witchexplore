@@ -87,4 +87,15 @@ public class HoldableSpawningController : MonoBehaviour
         layerTracker[holdableOne] = layerTracker[holdableTwo];
         layerTracker[holdableTwo] = _newHoldable;
     }
+
+    public void ClearDecorations()
+    {
+        HoldableObject[] _cachedDecorations = LayerToSpawnedDecorations.ToArray();
+
+        for (int i = 0; i < _cachedDecorations.Length; i++)
+        {
+            Destroy(LayerToSpawnedDecorations[i].transform.gameObject);
+        }
+        LayerToSpawnedDecorations.Clear();
+    }
 }

@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Decor_Frogskewer
   m_EditorClassIdentifier: 
   DisplayName: Frogskewer
-  sprite: {fileID: 21300000, guid: d0d94b0a5f7e8fb43abebb787b514f6a, type: 3}
+  Sprite: {fileID: 21300000, guid: d0d94b0a5f7e8fb43abebb787b514f6a, type: 3}
+  Type: 0
+  Size: 1.5
+  Tags: 3

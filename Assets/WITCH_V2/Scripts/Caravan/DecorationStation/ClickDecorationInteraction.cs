@@ -20,7 +20,6 @@ public class ClickDecorationInteraction : Interaction
     {
         base.Interact();
         // At the frame action list called
-        Debug.Log("sdsd***");
         EventBus.TriggerEvent(new DecorationClickEvent(Decoration));
     }
 }
