@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,5 +47,10 @@ public class DecorationStation : CaravanObject, IEventSubcriber<CakeCraftedEvent
         // TODO add anim before
         WorkingOnCake.enabled = false;
         HoldableSpawningController.ClearDecorations();
+    }
+
+    public bool HasWorkingOnCake()
+    {
+        return WorkingOnCake.enabled;
     }
 }

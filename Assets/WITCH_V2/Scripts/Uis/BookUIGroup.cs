@@ -2,38 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaravanRoomUiGroup : BaseUIPanel, IEventSubcriber<RoomEnteredEvent>
+public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>
 {
-    public CaravanRoom.ERoom ThisRoom;
-
-    private List<RectTransform> _items; 
-
     [Header("Debugging")]
     public bool ForceShow = false;
 
     protected override void OnObjectEnabled()
     {
         base.OnObjectEnabled();
-        EventBusRegister.EventBusSubcribe<RoomEnteredEvent>(this);
+        EventBusRegister.EventBusSubcribe<CakeSellEvent>(this);
     }
 
     protected override void OnObjectDisable()
     {
         base.OnObjectDisable();
-        EventBusRegister.EventBusSubcribe<RoomEnteredEvent>(this);
+        EventBusRegister.EventBusSubcribe<CakeSellEvent>(this);
     }
 
-    public void OnEventBusTrigger(RoomEnteredEvent eventType)
+    public void OnEventBusTrigger(CakeSellEvent eventType)
     {
-        if (eventType.ToRoom == ThisRoom)
-        {
-            ShowPanel();
+        StartCoroutine(DelayShowRoutine());
+    }
 
-        }
-        if (eventType.FromRoom == ThisRoom)
-        {
-            HidePanel();
-        }
+    IEnumerator DelayShowRoutine()
+    {
+        yield return new WaitForSeconds(1);
+        ShowPanel();
+        yield return new WaitForSeconds(1);
+        HidePanel();
     }
 
     protected override void OnInspectorChanged()

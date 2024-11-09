@@ -30,6 +30,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
     private Inventory _inventory;
     private List<DecorationButtonPanel> _decPanels;
     private ReleaseHoldableBound _holdReleaseBound;
+    private DecorationStation _decorationStation;
 
     protected override void OnObjectEnabled()
     {
@@ -48,6 +49,7 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         base.Initialization();
         _inventory = Inventory.Instance;
         _decPanels = new List<DecorationButtonPanel>();
+        _decorationStation = FindAnyObjectByType<DecorationStation>();
 
         // Set Up Event of Buttons
         FinishButton.onClick.AddListener(() => InvokeFinishAndSell());
@@ -69,11 +71,15 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
                 return;
             }
         }
+
     }
 
     private void InvokeFinishAndSell()
     {
-        EventBus.TriggerEvent(new CakeSellEvent());
+        if (_decorationStation.HasWorkingOnCake())
+        {
+            EventBus.TriggerEvent(new CakeSellEvent());
+        }
     }
 
     public void OnEventBusTrigger(RoomEnteredEvent eventType)
