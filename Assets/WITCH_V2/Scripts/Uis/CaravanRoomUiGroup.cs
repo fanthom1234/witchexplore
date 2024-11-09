@@ -5,6 +5,7 @@ using UnityEngine;
 public class CaravanRoomUiGroup : BaseUIPanel, IEventSubcriber<RoomEnteredEvent>
 {
     public CaravanRoom.ERoom ThisRoom;
+    public List<CaravanRoom.ERoom> MultipleRoom;
 
     private List<RectTransform> _items; 
 
@@ -25,6 +26,19 @@ public class CaravanRoomUiGroup : BaseUIPanel, IEventSubcriber<RoomEnteredEvent>
 
     public void OnEventBusTrigger(RoomEnteredEvent eventType)
     {
+        if (MultipleRoom.Count > 0)
+        {
+            // if entering room is in list, ShowPanel
+            if (MultipleRoom.Contains(eventType.ToRoom))
+            {
+                ShowPanel();
+            }
+            else // if entering room is Not in list, HidePanel
+            {
+                HidePanel();
+            }
+            return;
+        }
         if (eventType.ToRoom == ThisRoom)
         {
             ShowPanel();
