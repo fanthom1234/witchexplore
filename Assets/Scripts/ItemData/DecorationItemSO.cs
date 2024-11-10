@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Decor_", menuName = "WB/Decoration")]
@@ -17,7 +15,6 @@ public class DecorationItemSO : ItemData
     public EDecorationType Type;
     public float Size = 1.5f;
 
-    [Flags]
     public enum ETag
     {
         None,
@@ -25,9 +22,7 @@ public class DecorationItemSO : ItemData
         Mushroom,
         Vegetable,
         Fruit,
-
-        
     }
 
-    public ETag Tags;
+    public ETag[] Tags;
 }

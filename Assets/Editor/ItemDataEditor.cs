@@ -7,7 +7,7 @@ using System.Reflection;
 using Object = UnityEngine.Object;
 
 [CustomEditor(typeof(DecorationItemSO))]
-public class DecorationItemSOEditor : Editor
+public class ItemDataEditor : Editor
 {
     private DecorationItemSO item { get { return target as DecorationItemSO; } }
 

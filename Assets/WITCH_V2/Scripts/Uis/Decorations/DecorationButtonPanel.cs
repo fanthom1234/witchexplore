@@ -34,8 +34,7 @@ public class DecorationButtonPanel : BaseButtonPanel
         base.OnClick();
         _playerHoldingController.TryDestroyHolding();
         _currHold = HoldableSpawningController.SpawnHoldable(HoldDecorationPrefab, _releaseBound, "Holdable - Decoration") as Decoration;
-        _currHold.SetDecorationSprite(_decorationItem.Sprite);
-        _currHold.SetDecorationInteracableSize(Vector2.one *  _decorationItem.Size);
+        _currHold.SetDecorationData(_decorationItem);
     }
 
     public void SetDecorationReleaseBound(ReleaseHoldableBound holdReleaseBound)

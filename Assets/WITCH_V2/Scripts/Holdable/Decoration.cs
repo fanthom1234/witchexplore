@@ -1,16 +1,24 @@
 using AC;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public struct DecorationClickEvent
 {
     public Decoration Decoration;
 
     public DecorationClickEvent(Decoration decoration)
+    {
+        Decoration = decoration;
+    }
+}
+
+public struct DecorationPlacedEvent
+{
+    public Decoration Decoration;
+
+    public DecorationPlacedEvent(Decoration decoration)
     {
         Decoration = decoration;
     }
@@ -28,6 +36,8 @@ public class Decoration : HoldableObject
     public bool IsFlip;
 
     private HoldableSpawningController _spawningController;
+    private DecorationItemSO _decorationData;
+    public DecorationItemSO DecorationData => _decorationData;
 
     protected override void Initialization()
     {
@@ -41,10 +51,23 @@ public class Decoration : HoldableObject
         Hotspot.enabled = false;
     }
 
+    protected override void OnReleased()
+    {
+        base.OnReleased();
+        EventBus.TriggerEvent(new DecorationPlacedEvent(this));
+    }
+
     protected override void OnAfterReleaseCooldown()
     {
         base.OnAfterReleaseCooldown();
         Hotspot.enabled = true;
+    }
+
+    public void SetDecorationData(DecorationItemSO decorationItem)
+    {
+        _decorationData = decorationItem;
+        SetDecorationSprite(decorationItem.Sprite);
+        SetDecorationInteracableSize(decorationItem.Size * Vector2.one);
     }
 
     public void SetDecorationSprite(Sprite sprite)

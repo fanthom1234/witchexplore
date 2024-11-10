@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>
+public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSubcriber<SatisfactionEvaluatedEvent>
 {
+    [Header("Object Reference")]
+    public TextMeshProUGUI SatisfactionNumberText;
+    public TextMeshProUGUI CommentText;
+
     [Header("Debugging")]
     public bool ForceShow = false;
 
@@ -11,12 +16,14 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>
     {
         base.OnObjectEnabled();
         EventBusRegister.EventBusSubcribe<CakeSellEvent>(this);
+        EventBusRegister.EventBusSubcribe<SatisfactionEvaluatedEvent>(this);
     }
 
     protected override void OnObjectDisable()
     {
         base.OnObjectDisable();
         EventBusRegister.EventBusSubcribe<CakeSellEvent>(this);
+        EventBusRegister.EventBusSubcribe<SatisfactionEvaluatedEvent>(this);
     }
 
     public void OnEventBusTrigger(CakeSellEvent eventType)
@@ -28,7 +35,7 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>
     {
         yield return new WaitForSeconds(1);
         ShowPanel();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         HidePanel();
     }
 
@@ -42,6 +49,17 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>
         else
         {
             InstantSetAlpha(0);
+        }
+    }
+
+    public void OnEventBusTrigger(SatisfactionEvaluatedEvent eventType)
+    {
+        SatisfactionNumberText.text = eventType.Satisfaction.ToString() + "/10";
+
+        CommentText.text = "";
+        foreach (DecorationItemSO.ETag tag in eventType.MissingTags)
+        {
+            CommentText.text += tag.ToString() + " is missing.\n";
         }
     }
 }

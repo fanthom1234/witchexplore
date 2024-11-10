@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEnteredEvent>
+public class DecorationUIController : CaravanObject, IEventSubcriber<RoomEnteredEvent>
 {
     public enum EShelfType
     {
@@ -18,10 +18,8 @@ public class DecorationStationController : CaravanObject, IEventSubcriber<RoomEn
         Favourite
     }
 
-    public EShelfType CurrentShelf;
+    //public EShelfType CurrentShelf;
 
-    [Header("Asset Reference")]
-    public HoldableObject BaseCakePrefab;
     [Header("Sceen Object Reference")]
     public GridLayoutGroup GridLayoutGroup;
     public UnityEngine.UI.Button FinishButton;

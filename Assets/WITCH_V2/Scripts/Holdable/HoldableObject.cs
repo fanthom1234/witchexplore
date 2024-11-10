@@ -111,7 +111,7 @@ public class HoldableObject : CaravanObject
 
     }
 
-    public void SetDecorationReleaseBound(ReleaseHoldableBound releaseBound)
+    public void SetReleaseBound(ReleaseHoldableBound releaseBound)
     {
         ReleaseArea = releaseBound;
     }

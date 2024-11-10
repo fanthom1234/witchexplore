@@ -6,7 +6,7 @@ public class CoreGameManager : Singleton<CoreGameManager>
 {
     public PlayerHoldingController PlayerHoldingController;
     public HoldableSpawningController HoldableSpawningController;
-    public DecorationStationController DecorationStationController;
+    public DecorationUIController DecorationStationController;
     public RoomController RoomController;
-
+    public OrderController OrderController;
 }

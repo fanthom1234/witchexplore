@@ -24,7 +24,7 @@ public class HoldableSpawningController : MonoBehaviour
     public HoldableObject SpawnHoldable(HoldableObject basePrefab, ReleaseHoldableBound releaseHoldableBound, string sortingLayerName)
     {
         _newHoldable = Instantiate(basePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as Decoration;
-        _newHoldable.SetDecorationReleaseBound(releaseHoldableBound);
+        _newHoldable.SetReleaseBound(releaseHoldableBound);
         _newHoldable.DoHold();
 
         if (_newHoldable as Decoration && sortingLayerName.StartsWith("Holdable - Decoration"))
