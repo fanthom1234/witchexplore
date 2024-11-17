@@ -101,6 +101,8 @@ public class BaseUIPanel : CaravanObject
     protected void InstantSetAlpha(float alpha)
     {
         CanvasGroup.alpha = alpha;
+        CanvasGroup.interactable = alpha == 1 ? true : false;
+        CanvasGroup.blocksRaycasts = CanvasGroup.interactable;
     }
 
     public void ShowPanelSilent()

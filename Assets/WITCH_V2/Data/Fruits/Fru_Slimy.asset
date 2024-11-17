@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Fru_Slimy
   m_EditorClassIdentifier: 
   DisplayName: Slimy
-  sprite: {fileID: 21300000, guid: f3827ee53d769ab4daf206b2f097d71d, type: 3}
+  Sprite: {fileID: 21300000, guid: f3827ee53d769ab4daf206b2f097d71d, type: 3}
+  FruitType: 0
+  GrowingSprite: {fileID: 21300000, guid: 80720b20090552d4bb318f201604194b, type: 3}

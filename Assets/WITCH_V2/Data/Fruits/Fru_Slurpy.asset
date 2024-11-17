@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Fru_Slurpy
   m_EditorClassIdentifier: 
   DisplayName: Slurpy
-  sprite: {fileID: 21300000, guid: 2af6218ed6585d948a34e45ad1ef3b51, type: 3}
+  Sprite: {fileID: 21300000, guid: 2af6218ed6585d948a34e45ad1ef3b51, type: 3}
+  FruitType: 0
+  GrowingSprite: {fileID: 21300000, guid: 80720b20090552d4bb318f201604194b, type: 3}

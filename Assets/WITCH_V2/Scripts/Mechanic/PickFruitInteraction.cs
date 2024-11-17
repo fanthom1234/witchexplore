@@ -11,6 +11,7 @@ public class PickFruitInteraction : Interaction
     [SerializeField] MoveMethod MoveMethod;
 
     [Header("Object Reference")]
+    [SerializeField] GardenFruit GardenFruit;
     [SerializeField] Moveable Moveable;
     [SerializeField] SpriteFader SpriteFader;
 
@@ -30,6 +31,7 @@ public class PickFruitInteraction : Interaction
         {
             fruitTransform.TryGetComponent(out Moveable);
             fruitTransform.TryGetComponent(out SpriteFader);
+            fruitTransform.TryGetComponent(out GardenFruit);
         }
     }
 
@@ -37,6 +39,7 @@ public class PickFruitInteraction : Interaction
     {
         base.Interact();
         // At the frame action list called
+        GardenFruit.DoPickUp();
         SpriteFader.Fade(FadeType.fadeOut, AnimateDuration, 1);
         Moveable.Move(Moveable.transform.position + (Vector3.up * ModifyPositionY), MoveMethod, true, AnimateDuration, TransformType.Translate, false , null, false);
         Invoke("OnFinishAnimate", AnimateDuration + .1f);

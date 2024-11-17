@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
+public struct InventoryFruitChanged
+{
+
+}
+
 public class Inventory : Singleton<Inventory>
 {
     public List<Item> items;
@@ -14,5 +19,11 @@ public class Inventory : Singleton<Inventory>
     public void AddBaseCake(BaseCakeSO baseCake)
     {
         baseCakes.Add(baseCake);
+    }
+
+    public void AddFruit(FruitItemSO fruitItemSO)
+    {
+        FruitsInBasket.Add(fruitItemSO);
+        EventBus.TriggerEvent(new InventoryFruitChanged());
     }
 }

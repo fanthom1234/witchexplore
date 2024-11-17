@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Fru_Starry
   m_EditorClassIdentifier: 
   DisplayName: Starry
-  sprite: {fileID: 21300000, guid: f1dc8e03b11bde342ba0047b4e5aaf2b, type: 3}
+  Sprite: {fileID: 21300000, guid: f1dc8e03b11bde342ba0047b4e5aaf2b, type: 3}
+  FruitType: 1
+  GrowingSprite: {fileID: 21300000, guid: 80720b20090552d4bb318f201604194b, type: 3}

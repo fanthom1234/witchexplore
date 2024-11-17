@@ -3260,7 +3260,7 @@ MonoBehaviour:
   canvas: {fileID: 22300000, guid: c0c015396cfdfeb45b9e30a0bc0ad9fc, type: 3}
   canvasAssetKey: 
   canvasID: 0
-  rectTransform: {fileID: 0}
+  rectTransform: {fileID: 22400036, guid: c0c015396cfdfeb45b9e30a0bc0ad9fc, type: 3}
   rectTransformID: 1765320
   uiTransitionType: 1
   uiPositionType: 0
@@ -3290,7 +3290,7 @@ MonoBehaviour:
   - {fileID: -2799858841335574608}
   - {fileID: -7297565656178464377}
   transitionProgress: 0
-  appearType: 1
+  appearType: 0
   speechMenuType: 0
   speechMenuLimit: 0
   limitToCharacters: 
