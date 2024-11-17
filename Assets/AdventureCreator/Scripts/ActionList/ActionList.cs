@@ -167,6 +167,7 @@ namespace AC
 			}
 
 			DownloadParameters ();
+			OnAwake();
 
 			/*if (useParameters)
 			{
@@ -178,8 +179,12 @@ namespace AC
 			}*/
 		}
 
+        protected virtual void OnAwake()
+        {
 
-		private void DownloadParameters ()
+        }
+
+        private void DownloadParameters ()
 		{
 			// If asset-based, download actions
 			if (source == ActionListSource.AssetFile)
