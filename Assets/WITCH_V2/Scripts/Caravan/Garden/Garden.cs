@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class Garden : CaravanObject, IEventSubcriber<WateringEvent>
+public class Garden : CaravanObject, IEventSubcriber<WateringEvent>, IEventSubcriber<GardenFruitPickedUp>
 {
     [System.Serializable]
     public class BranchRuntimeData
@@ -38,12 +38,14 @@ public class Garden : CaravanObject, IEventSubcriber<WateringEvent>
     {
         base.OnObjectEnabled();
         EventBusRegister.EventBusSubcribe<WateringEvent>(this);
+        EventBusRegister.EventBusSubcribe<GardenFruitPickedUp>(this);
     }
 
     protected override void OnObjectDisable()
     {
         base.OnObjectDisable();
         EventBusRegister.EventBusUnscribe<WateringEvent>(this);
+        EventBusRegister.EventBusUnscribe<GardenFruitPickedUp>(this);
     }
 
     protected override void Initialization()
@@ -99,7 +101,7 @@ public class Garden : CaravanObject, IEventSubcriber<WateringEvent>
         if (AvailableFruitGroup.GetChild(0).gameObject.TryGetComponent(out _fruit))
         {
             _fruit.transform.SetParent(FruitGroup);
-            _fruit.transform.position = m.Position;
+            _fruit.SetPositionMarker(m);
             _fruit.SetFruit(fruitItem);
             _fruit.SetStage(GardenFruit.EStage.FullyGrown);
         }
@@ -146,6 +148,14 @@ public class Garden : CaravanObject, IEventSubcriber<WateringEvent>
         for (int i = 0; i < GrowOnWatering; i++)
         {
             GrowFruit();
+        }
+    }
+
+    public void OnEventBusTrigger(GardenFruitPickedUp eventType)
+    {
+        if (_freeMarkers.Contains(eventType.Marker) == false)
+        {
+            _freeMarkers.Add(eventType.Marker);
         }
     }
 }

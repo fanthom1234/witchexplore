@@ -5,7 +5,15 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
+public struct GardenFruitPickedUp
+{
+    public Marker Marker;
 
+    public GardenFruitPickedUp(Marker marker)
+    {
+        Marker = marker;
+    }
+}
 
 public class GardenFruit : CaravanObject
 {
@@ -24,6 +32,7 @@ public class GardenFruit : CaravanObject
     public Hotspot Hotspot;
 
     private Inventory _inventory;
+    private Marker _currPosMarker;
 
     protected override void Initialization()
     {
@@ -47,6 +56,7 @@ public class GardenFruit : CaravanObject
     {
         if (CurrentStage == EStage.FullyGrown)
         {
+            Renderer.color = Color.white;
             Renderer.sprite = FruitItemSO.Sprite;
             Hotspot.enabled = true;
         }
@@ -66,5 +76,12 @@ public class GardenFruit : CaravanObject
     public void DoPickUp()
     {
         _inventory.AddFruit(FruitItemSO);
+        EventBus.TriggerEvent(new GardenFruitPickedUp(_currPosMarker));
+    }
+
+    public void SetPositionMarker(Marker m)
+    {
+        transform.position = m.Position;
+        _currPosMarker = m;
     }
 }
