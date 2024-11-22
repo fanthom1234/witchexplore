@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,12 +6,20 @@ using UnityEngine;
 
 public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSubcriber<SatisfactionEvaluatedEvent>
 {
+    [SerializeField]
+    BaseUIPanel[] PagePanels;
+
     [Header("Object Reference")]
     public RectTransform SatisfactionMask;
     public TextMeshProUGUI CommentText;
 
     [Header("Debugging")]
     public bool ForceShow = false;
+
+    private int _currPage = -1;
+    public const int RECIPE = 0;
+    public const int COLLECTION = 1;
+    public const int SUMMARY = 2;
 
     protected override void OnObjectEnabled()
     {
@@ -26,9 +35,26 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
         EventBusRegister.EventBusSubcribe<SatisfactionEvaluatedEvent>(this);
     }
 
+    protected override void Initialization()
+    {
+        base.Initialization();
+        
+    }
+
     public void OnEventBusTrigger(CakeSellEvent eventType)
     {
+        SetPage(SUMMARY);
         StartCoroutine(DelayShowRoutine());
+    }
+
+    private void SetPage(int targetPage)
+    {
+        if (_currPage >= 0)
+        {
+            PagePanels[_currPage].HidePanel();
+        }
+        _currPage = targetPage;
+        PagePanels[targetPage].ShowPanel();
     }
 
     IEnumerator DelayShowRoutine()
