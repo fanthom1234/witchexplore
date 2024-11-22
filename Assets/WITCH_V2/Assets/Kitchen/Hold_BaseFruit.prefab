@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 7362646338451825750}
   - component: {fileID: 3414780841311431242}
   - component: {fileID: 7040650470530305986}
-  - component: {fileID: 9065343450772918957}
   m_Layer: 0
   m_Name: Hold_BaseFruit
   m_TagString: Untagged
@@ -155,7 +154,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2008342363
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 865b5731db5df6747b0ce0b74c9b7ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
@@ -391,21 +390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantID: 126566
   retainInPrefab: 1
-  autoManual: 0
---- !u!114 &9065343450772918957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8082043516061948267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  constantID: 126566
-  retainInPrefab: 0
   autoManual: 0
 --- !u!1 &8265545539005092886
 GameObject:

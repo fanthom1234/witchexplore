@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f45f75afdf72c540948d8eb0a29ee22, type: 3}
-  m_Name: Fru_Slurpy
+  m_Name: Fru_S_Fish
   m_EditorClassIdentifier: 
-  DisplayName: Slurpy
-  Sprite: {fileID: 21300000, guid: 2af6218ed6585d948a34e45ad1ef3b51, type: 3}
+  DisplayName: Fish
+  Sprite: {fileID: 828268591, guid: 201a55daad976484a95aa2a64d625d44, type: 3}
   FruitType: 0
   GrowingSprite: {fileID: 21300000, guid: 80720b20090552d4bb318f201604194b, type: 3}

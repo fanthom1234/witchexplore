@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f45f75afdf72c540948d8eb0a29ee22, type: 3}
-  m_Name: Fru_Smelly
+  m_Name: Fru_C_Blood
   m_EditorClassIdentifier: 
-  DisplayName: Smelly
-  Sprite: {fileID: 21300000, guid: 865b5731db5df6747b0ce0b74c9b7ff7, type: 3}
-  FruitType: 2
+  DisplayName: Blood
+  Sprite: {fileID: 1120726363, guid: 201a55daad976484a95aa2a64d625d44, type: 3}
+  FruitType: 0
   GrowingSprite: {fileID: 21300000, guid: 80720b20090552d4bb318f201604194b, type: 3}

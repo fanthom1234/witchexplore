@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d810d5f55a9c09e4b9ff95b5b39c0eda, type: 3}
+  m_Name: CakeRecipe_C_Poison
+  m_EditorClassIdentifier: 
+  recipeName: Poison Cake
+  ResultBaseCake: {fileID: 11400000, guid: 3ee851af4908ee34db2bdf35d4ad8b40, type: 2}
+  RequiredIngredients:
+    Fruit: {fileID: 11400000, guid: 07197b85a9d5d4d4d8e58e0f529be2b9, type: 2}
+    Flour: 1
+    Milk: 0
+    Egg: 1
+    Butter: 0
+    Sugar: 0
+  craftingString: Poisonflouregg
+  instructions: 

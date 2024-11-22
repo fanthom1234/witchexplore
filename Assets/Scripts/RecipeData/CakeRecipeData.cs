@@ -14,7 +14,7 @@ public class Ingredient
         Flour, Milk, Egg, Butter, Sugar, 
     }
 
-    public string Fruit; // The fruit required for the recipe.
+    public FruitItemSO Fruit; // The fruit required for the recipe.
     public int Flour; // Does the recipe require flour?
     public int Milk; // Does the recipe require milk?
     public int Egg; // Does the recipe require egg?
@@ -34,13 +34,9 @@ public class Ingredient
         Butter += type == EType.Butter ? 1 : 0;
         Sugar += type == EType.Sugar ? 1 : 0;
     }
-    public void SetFruit(string fruitName)
-    {
-        Fruit = fruitName;
-    }
     public void Clear()
     {
-        Fruit = "";
+        Fruit = null;
         Flour = 0;
         Milk = 0;
         Egg = 0;
@@ -65,6 +61,7 @@ public class CakeRecipeData : ScriptableObject
     private void OnValidate()
     {
         craftingString = GenerateCraftingString(RequiredIngredients);
+        recipeName = RequiredIngredients.Fruit.DisplayName + " Cake";
     }
 
     /// <summary>
@@ -72,7 +69,7 @@ public class CakeRecipeData : ScriptableObject
     /// </summary>
     public static string GenerateCraftingString(Ingredient ingres)
     {
-        string s = ingres.Fruit;
+        string s = ingres.Fruit.DisplayName;
         for (int i = 0; i < ingres.Flour; i++)
         {
             s += "flour";

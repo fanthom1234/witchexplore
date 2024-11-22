@@ -35,6 +35,12 @@ public class GardenFruit : CaravanObject
     {
         FruitItemSO = fruitItemSO;
         SetStage(EStage.FullyGrown);
+        Invoke("ChangeHotSpotName", 0.001f);
+    }
+
+    private void ChangeHotSpotName()
+    {
+        Hotspot.SetName(FruitItemSO.DisplayName, Hotspot.displayLineID);
     }
 
     private void EvaluateStage()

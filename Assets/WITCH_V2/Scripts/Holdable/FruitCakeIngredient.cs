@@ -7,6 +7,7 @@ using UnityEngine;
 public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldronEvent>
 {
     public string FruitName;
+    public FruitItemSO FruitItemSO;
     [SerializeField] float ReleaseDownForce = 7;
 
     private Rigidbody2D rigidbody2d;
@@ -114,5 +115,6 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
         SpriteRenderer.sprite = fruitItemSO.Sprite;
         _hasFruit = true;
         Hotspot.SetName(FruitName, Hotspot.displayLineID);
+        FruitItemSO = fruitItemSO;
     }
 }

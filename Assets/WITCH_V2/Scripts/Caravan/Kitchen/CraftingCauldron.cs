@@ -21,11 +21,13 @@ public struct FruitToCauldronEvent
 {
     public string FruitName;
     public FruitCakeIngredient FruitCakeIngredient;
+    public FruitItemSO FruitItemSO;
 
     public FruitToCauldronEvent(FruitCakeIngredient ingredient)
     {
         FruitName = ingredient.FruitName;
         FruitCakeIngredient = ingredient;
+        FruitItemSO = ingredient.FruitItemSO;
     }
 }
 // Evebt struct representing a cake got crafted
@@ -100,13 +102,13 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     /// <param name="eventType"></param>
     public void OnEventBusTrigger(FruitToCauldronEvent eventType)
     {
-        if (IngredientsInCauldron.Fruit == NOFRUIT)
+        if (IngredientsInCauldron.Fruit == null)
         {
-            IngredientsInCauldron.Fruit = eventType.FruitName;
+            IngredientsInCauldron.Fruit = eventType.FruitItemSO;
         }
         else
         {
-            IngredientsInCauldron.Fruit = eventType.FruitName;
+            IngredientsInCauldron.Fruit = eventType.FruitItemSO;
         }
     }
 
