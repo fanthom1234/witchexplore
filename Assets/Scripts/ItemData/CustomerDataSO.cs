@@ -16,21 +16,7 @@ public class CustomerDataSO : ItemData
     // +1 reward for inclusion per tag not piece
     public DecorationItemSO.ETag HiddenLikeTags;
 
-    //[ReadOnly]
-    //public string TagsString;
+    [TextAreaAttribute]
+    public string OrderDescription;
 
-    //private void OnValidate()
-    //{
-    //    TagsString = GenerateString();
-    //}
-
-    //public string GenerateString()
-    //{
-    //    string s = "";
-    //    foreach (ETag tag in RequireTags)
-    //    {
-    //        s += tag.ToString();
-    //    }
-    //    return s;
-    //}
 }

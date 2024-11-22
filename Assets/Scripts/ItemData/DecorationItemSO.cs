@@ -18,10 +18,8 @@ public class DecorationItemSO : ItemData
     public enum ETag
     {
         None,
-        Pizza,
-        Mushroom,
-        Vegetable,
-        Fruit,
+        Candy,
+        Mushroom,Flowers,Creatures,BloodBones,Plant,Egg,Meat,Seafood
     }
 
     public ETag[] Tags;

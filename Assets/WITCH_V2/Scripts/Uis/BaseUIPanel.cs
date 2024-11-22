@@ -147,4 +147,16 @@ public class BaseUIPanel : CaravanObject
             HidePanel();
         }
     }
+
+    public void TogglePanel()
+    {
+        if (IsShowing)
+        {
+            HidePanel();
+        }
+        else
+        {
+            ShowPanel();
+        }
+    }
 }

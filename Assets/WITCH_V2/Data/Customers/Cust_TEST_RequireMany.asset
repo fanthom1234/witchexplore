@@ -15,6 +15,7 @@ MonoBehaviour:
   DisplayName: John Doe
   Sprite: {fileID: 21300000, guid: 224ef788f37d050438f90add7f412ab7, type: 3}
   CustomerName: John Doe
-  RequireTags: 010000000200000003000000
-  HiddenLikeTags: 3
-  TagsString: PizzaMushroomVegetable
+  RequireTags: 0300000002000000
+  HiddenLikeTags: 0
+  OrderDescription: I am celebrating my 200th anniversary. Can I get a cake that
+    shows love? For toppings, I want alot of flowers and mushrooms.
