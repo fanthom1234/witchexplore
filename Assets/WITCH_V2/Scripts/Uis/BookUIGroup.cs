@@ -6,7 +6,7 @@ using UnityEngine;
 public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSubcriber<SatisfactionEvaluatedEvent>
 {
     [Header("Object Reference")]
-    public TextMeshProUGUI SatisfactionNumberText;
+    public RectTransform SatisfactionMask;
     public TextMeshProUGUI CommentText;
 
     [Header("Debugging")]
@@ -54,7 +54,14 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
 
     public void OnEventBusTrigger(SatisfactionEvaluatedEvent eventType)
     {
-        SatisfactionNumberText.text = eventType.Satisfaction.ToString() + "/10";
+        float w = (70 * Mathf.Floor(eventType.Satisfaction)) - 20;
+        if (eventType.Satisfaction > Mathf.Floor(eventType.Satisfaction))
+        {
+            w -= 25;
+        }
+        Debug.Log(w + " " + eventType.Satisfaction);
+        SatisfactionMask.sizeDelta = new Vector2(w, 50);
+        //SatisfactionNumberText.text = eventType.Satisfaction.ToString() + "/10";
 
         CommentText.text = "";
         foreach (DecorationItemSO.ETag tag in eventType.MissingTags)
@@ -63,3 +70,5 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
         }
     }
 }
+
+

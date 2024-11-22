@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840891d807cb7d641a974587aee506aa, type: 3}
   m_Name: BaseCake_Smelly
   m_EditorClassIdentifier: 
-  CakeSprite: {fileID: 21300000, guid: c20e06c47afcaaa47abbc6356d5909eb, type: 3}
+  CakeSprite: {fileID: 21300000, guid: 9009b91237d603b49b6e5818dc70de59, type: 3}
