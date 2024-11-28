@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_C_Poop
   m_EditorClassIdentifier: 
   recipeName: Poop Cake
-  ResultBaseCake: {fileID: 11400000, guid: 3ee851af4908ee34db2bdf35d4ad8b40, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: ae294227011587d43b362168f7c8a4af, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 8eb5027ebcc92bb45a07e2c512d5b0ae, type: 2}
     Flour: 1

@@ -6178,9 +6178,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675708566}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &675708569
 MonoBehaviour:
@@ -6202,7 +6202,7 @@ MonoBehaviour:
   - {fileID: 2052145118}
   SatisfactionMask: {fileID: 1346907744}
   CommentText: {fileID: 323470029}
-  ForceShow: 1
+  ForceShow: 0
 --- !u!114 &699079108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1811607634277846981, guid: af9475ce2c66e0f41a990ca5d6ac87b4, type: 3}
@@ -10734,7 +10734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -258.00006, y: -122.00007}
+  m_AnchoredPosition: {x: -258.00006, y: -122.00006}
   m_SizeDelta: {x: 54, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331905782

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_P_Love
   m_EditorClassIdentifier: 
   recipeName: Love Cake
-  ResultBaseCake: {fileID: 11400000, guid: 3b58f7327fe5ef04dbcf87a42cb5b786, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: d1c565a7251786341a852d793a15bd64, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 4dafe59a6a578f243a8331cce899271f, type: 2}
     Flour: 1

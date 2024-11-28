@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_S_Fish
   m_EditorClassIdentifier: 
   recipeName: Fish Cake
-  ResultBaseCake: {fileID: 11400000, guid: 2ef20906b6d72aa4c96a4f8892e0bf7b, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: 502235a91f186ac4792df16eb8f33e3f, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: b3e1e95ce33bdff48ac4209190183420, type: 2}
     Flour: 1

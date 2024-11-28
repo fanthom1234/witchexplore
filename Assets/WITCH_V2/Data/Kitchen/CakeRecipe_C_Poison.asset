@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_C_Poison
   m_EditorClassIdentifier: 
   recipeName: Poison Cake
-  ResultBaseCake: {fileID: 11400000, guid: 3ee851af4908ee34db2bdf35d4ad8b40, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: f1133546479d5b9459da6b1e608bf5ca, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 07197b85a9d5d4d4d8e58e0f529be2b9, type: 2}
     Flour: 1

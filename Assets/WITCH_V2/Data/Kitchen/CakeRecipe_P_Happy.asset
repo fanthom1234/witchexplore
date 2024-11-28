@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_P_Happy
   m_EditorClassIdentifier: 
   recipeName: Happy Cake
-  ResultBaseCake: {fileID: 11400000, guid: 131c671aa3d28b14c8bd7d53d92554d0, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: 699d3dd0c1b7f094a98c1bea97623baf, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 20021921cbc91804cb082e1fa756344a, type: 2}
     Flour: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CakeRecipe_C_Blood
   m_EditorClassIdentifier: 
   recipeName: Blood Cake
-  ResultBaseCake: {fileID: 11400000, guid: 2ef20906b6d72aa4c96a4f8892e0bf7b, type: 2}
+  ResultBaseCake: {fileID: 11400000, guid: 7a8a71cb91529db4faf84789b51e60c5, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 305e4266571b69449a3c1102e8c817eb, type: 2}
     Flour: 1
