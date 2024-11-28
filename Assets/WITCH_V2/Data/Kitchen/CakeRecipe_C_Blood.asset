@@ -19,7 +19,7 @@ MonoBehaviour:
     Flour: 1
     Milk: 0
     Egg: 1
-    Butter: 0
+    Butter: 1
     Sugar: 0
-  craftingString: Bloodflouregg
+  craftingString: Bloodfloureggbutter
   instructions: 

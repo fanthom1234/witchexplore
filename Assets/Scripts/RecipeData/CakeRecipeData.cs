@@ -43,6 +43,29 @@ public class Ingredient
         Butter = 0;
         Sugar = 0; 
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
+    public int GetIngredientIdAt(int i)
+    {
+        int count = 0;
+
+        count += Flour;
+        if (count == i) { return 1; }
+        count += Milk;
+        if (count == i) { return 2; }
+        count += Egg;
+        if (count == i) { return 3; }
+        count += Butter;
+        if (count == i) { return 4; }
+        count += Sugar;
+        if (count == i) { return 5; }
+
+        return 0;
+    }
 }
 
 [CreateAssetMenu(fileName = "NewRecipe", menuName = "WB/Recipe")]
