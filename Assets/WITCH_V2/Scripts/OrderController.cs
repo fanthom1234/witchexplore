@@ -11,10 +11,11 @@ public class OrderController : Singleton<OrderController>
 
     private List<DecorationItemSO.ETag> requiredTag;
     private Dictionary<DecorationItemSO.ETag, int> _tagToCount;
+    
 
     public float EvaluateSatisfaction(BaseCakeSO cake, List<DecorationItemSO> _decorations)
     {
-        float satisfaction = 5;
+        float satisfaction = 4;
         CreateTagToCountDict(_decorations);
 
         requiredTag = new List<DecorationItemSO.ETag>(Customer.RequireTags);
@@ -28,6 +29,11 @@ public class OrderController : Singleton<OrderController>
 
         // If there is tag left to required, satisfaction decrease
         satisfaction -= (requiredTag.Count * 1.5f);
+
+        if (Customer.CheckCake(cake))
+        {
+            satisfaction += 1;
+        }
             
         return satisfaction;
     }

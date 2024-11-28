@@ -47,7 +47,7 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
         StartCoroutine(DelayShowRoutine());
     }
 
-    private void SetPage(int targetPage)
+    public void SetPage(int targetPage)
     {
         if (_currPage >= 0)
         {
@@ -59,9 +59,9 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
 
     IEnumerator DelayShowRoutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.25f);
         ShowPanel();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         HidePanel();
     }
 
