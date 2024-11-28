@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +18,7 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
     public const int RECIPE = 0;
     public const int COLLECTION = 1;
     public const int SUMMARY = 2;
+    private HotspotController _hotspotController;
 
     protected override void OnObjectEnabled()
     {
@@ -38,7 +37,19 @@ public class BookUIGroup : BaseUIPanel, IEventSubcriber<CakeSellEvent>, IEventSu
     protected override void Initialization()
     {
         base.Initialization();
-        
+        _hotspotController = HotspotController.Instance;
+    }
+
+    protected override void OnShowingPanel()
+    {
+        base.OnShowingPanel();
+        _hotspotController.DisableHotspots();
+    }
+
+    protected override void OnHidingPanel()
+    {
+        base.OnHidingPanel();
+        _hotspotController.EnableHotspots();
     }
 
     public void OnEventBusTrigger(CakeSellEvent eventType)
