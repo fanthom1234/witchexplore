@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f852dd29be34314fa7f3c0595341c26, type: 3}
-  m_Name: Cust_TEST_RequireMany
+  m_Name: Cust_TEST_Green
   m_EditorClassIdentifier: 
   DisplayName: John Doe
-  Sprite: {fileID: 21300000, guid: 224ef788f37d050438f90add7f412ab7, type: 3}
+  Sprite: {fileID: 21300000, guid: efd6c08cfd420b04d93315fdfefdf6c2, type: 3}
   CustomerName: John Doe
+  RequiredCake: {fileID: 11400000, guid: d1c565a7251786341a852d793a15bd64, type: 2}
   RequireTags: 0300000002000000
   HiddenLikeTags: 0
   OrderDescription: I am celebrating my 200th anniversary. Can I get a cake that
