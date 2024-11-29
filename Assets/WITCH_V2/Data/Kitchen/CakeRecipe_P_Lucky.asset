@@ -16,10 +16,10 @@ MonoBehaviour:
   ResultBaseCake: {fileID: 11400000, guid: 740fc57d5a8a2ef489f3589e5a682a21, type: 2}
   RequiredIngredients:
     Fruit: {fileID: 11400000, guid: 26e515ad89004a74e8497fd0566e878d, type: 2}
-    Flour: 1
-    Milk: 0
-    Egg: 1
+    Flour: 0
+    Milk: 1
+    Egg: 0
     Butter: 1
-    Sugar: 0
-  craftingString: Luckyfloureggbutter
+    Sugar: 1
+  craftingString: Luckymilkbuttersugar
   instructions: 
