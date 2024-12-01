@@ -10,7 +10,7 @@ public class FruitKitchenButtonPanel : BaseButtonPanel
 {
     [SerializeField] Image FruitImage;
     [SerializeField] TextMeshProUGUI AmountText;
-    [SerializeField] HoldableObject HoldableFruit;
+    [SerializeField] FruitCakeIngredient HoldableFruit;
 
     private Inventory.InvenItem fruit;
 
@@ -26,6 +26,7 @@ public class FruitKitchenButtonPanel : BaseButtonPanel
     {
         base.OnClick();
         HoldableFruit.transform.position = this.transform.position;
+        HoldableFruit.SetFruitData(fruit.ItemData as FruitItemSO);
         HoldableFruit.DoHold();
         fruit.Count--;
         if (fruit.Count == 0)
