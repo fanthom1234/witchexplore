@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,17 +10,43 @@ public class FruitKitchenButtonPanel : BaseButtonPanel
 {
     [SerializeField] Image FruitImage;
     [SerializeField] TextMeshProUGUI AmountText;
+    [SerializeField] HoldableObject HoldableFruit;
+
+    private Inventory.InvenItem fruit;
 
     public void SetFruit(Inventory.InvenItem fruitItem)
     {
-        if (fruitItem.Count > 1)
+        fruit = fruitItem;
+        EvaluateAmountText();
+        FruitImage.sprite = fruitItem.ItemData.Sprite;
+        HoldableFruit.SpriteRenderer.sprite = FruitImage.sprite;
+    }
+
+    protected override void OnClick()
+    {
+        base.OnClick();
+        HoldableFruit.transform.position = this.transform.position;
+        HoldableFruit.DoHold();
+        fruit.Count--;
+        if (fruit.Count == 0)
         {
-            AmountText.text = "x" + fruitItem.Count.ToString();
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            EvaluateAmountText();
+        }
+    }
+
+    private void EvaluateAmountText()
+    {
+        if (fruit.Count > 1)
+        {
+            AmountText.text = "x" + fruit.Count.ToString();
         }
         else
         {
             AmountText.text = "";
         }
-        FruitImage.sprite = fruitItem.ItemData.Sprite;
     }
 }

@@ -21,8 +21,9 @@ public class FruitBasket : CaravanObject, IEventSubcriber<InventoryFruitChanged>
         EventBusRegister.EventBusUnscribe<InventoryFruitChanged>(this);
     }
 
-    private void Start()
+    protected override void Initialization()
     {
+        base.Initialization();
         EvaluateFruitInBasket();
     }
 

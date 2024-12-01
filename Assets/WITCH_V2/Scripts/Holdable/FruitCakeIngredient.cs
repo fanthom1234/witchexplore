@@ -68,7 +68,14 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
         rigidbody2d.velocity = Vector2.zero;
         SpriteRenderer.enabled = false;
         transform.position = _startPos;
-        Hotspot.TurnOff();
+        Hotspot?.TurnOff();
+    }
+
+    protected override void OnHolded()
+    {
+        base.OnHolded();
+        rigidbody2d.velocity = Vector3.zero;
+        rigidbody2d.gravityScale = 0;
     }
 
     protected override void OnReleased()
@@ -82,9 +89,9 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
 
     IEnumerator DisableHotspotRoutine()
     {
-        Hotspot.TurnOff();
+        Hotspot?.TurnOff();
         yield return new WaitForEndOfFrame();
-        Hotspot.TurnOn();
+        Hotspot?.TurnOn();
     }
 
     /// <summary>
@@ -94,11 +101,11 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
     {
         if (_hasFruit)
         {
-            Hotspot.TurnOn();
+            Hotspot?.TurnOn();
         }
         else
         {
-            Hotspot.TurnOff();
+            Hotspot?.TurnOff();
         }
     }
 
@@ -114,7 +121,7 @@ public class FruitCakeIngredient : HoldableObject, IEventSubcriber<FruitToCauldr
         FruitName = fruitItemSO.DisplayName;
         SpriteRenderer.sprite = fruitItemSO.Sprite;
         _hasFruit = true;
-        Hotspot.SetName(FruitName, Hotspot.displayLineID);
+        Hotspot?.SetName(FruitName, Hotspot.displayLineID);
         FruitItemSO = fruitItemSO;
     }
 }

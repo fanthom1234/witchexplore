@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotspotController : Singleton<HotspotController>
+public class HotspotController : Singleton<HotspotController>, IEventSubcriber<ObjectHoldEvent>
 {
     private List<AC.Hotspot> hotspots;
 
@@ -11,6 +11,16 @@ public class HotspotController : Singleton<HotspotController>
     {
         base.Awake();
         hotspots = new List<AC.Hotspot>(FindObjectsByType<AC.Hotspot>(sortMode: FindObjectsSortMode.None));
+    }
+
+    private void OnEnable()
+    {
+        EventBusRegister.EventBusSubcribe<ObjectHoldEvent>(this);
+    }
+
+    private void OnDisable()
+    {
+        EventBusRegister.EventBusUnscribe<ObjectHoldEvent>(this);
     }
 
     public void DisableHotspots()
@@ -28,6 +38,18 @@ public class HotspotController : Singleton<HotspotController>
         foreach (var hotspot in hotspots)
         {
             hotspot.enabled = e;
+        }
+    }
+
+    public void OnEventBusTrigger(ObjectHoldEvent eventType)
+    {
+        if (eventType.Holdable == null)
+        {
+            EnableHotspots();
+        }
+        else
+        {
+            DisableHotspots();
         }
     }
 }

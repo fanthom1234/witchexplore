@@ -8,21 +8,21 @@ public static class EventBus
     // cached all subcriber
     // key is Event type(struct)
     // value is list of subscriber of key Event
-    private static Dictionary<Type, List<IEventBaseSubcriber>> _eventSubscribers;
+    private static Dictionary<Type, List<IEventSubcriber>> _eventSubscribers;
 
     static EventBus()
     {
-        _eventSubscribers = new Dictionary<Type, List<IEventBaseSubcriber>>();
+        _eventSubscribers = new Dictionary<Type, List<IEventSubcriber>>();
     }
 
-    public static void AddSubcriber<Event>(IEventBaseSubcriber newEventSubcriber) where Event : struct
+    public static void AddSubcriber<Event>(IEventSubcriber newEventSubcriber) where Event : struct
     {
         Type eventType = typeof(Event);
 
         // create subcriber list if never cached Event type
         if (!_eventSubscribers.ContainsKey(eventType))
         {
-            _eventSubscribers.Add(eventType, new List<IEventBaseSubcriber>());
+            _eventSubscribers.Add(eventType, new List<IEventSubcriber>());
         }
 
         // add newEventSubcriber to subcriber list of its Event type
@@ -38,9 +38,9 @@ public static class EventBus
     /// <param name="eventType"></param>
     /// <param name="newSubcriber"></param>
     /// <returns></returns>
-    private static bool CheckSubcribed(Type eventType, IEventBaseSubcriber newSubcriber)
+    private static bool CheckSubcribed(Type eventType, IEventSubcriber newSubcriber)
     {
-        foreach(IEventBaseSubcriber eventSubcriber in _eventSubscribers[eventType])
+        foreach(IEventSubcriber eventSubcriber in _eventSubscribers[eventType])
         {
             if(eventSubcriber == newSubcriber)
             {
@@ -55,12 +55,12 @@ public static class EventBus
     /// </summary>
     /// <typeparam name="Event"></typeparam>
     /// <param name="removeSubcriber"></param>
-    public static void RemoveSubcriber<Event>(IEventBaseSubcriber removeSubcriber) where Event : struct
+    public static void RemoveSubcriber<Event>(IEventSubcriber removeSubcriber) where Event : struct
     {
         Type eventType = typeof(Event);
 
         // return if there is no subcriber of Event type
-        List<IEventBaseSubcriber> currentSubcribers;
+        List<IEventSubcriber> currentSubcribers;
         if (!_eventSubscribers.TryGetValue(eventType, out currentSubcribers))
         {
             return;
@@ -79,7 +79,7 @@ public static class EventBus
     /// <param name="newEvent"></param>
     public static void TriggerEvent<Event>(Event triggeredEvent) where Event : struct
     {
-        List<IEventBaseSubcriber> subcribers = new List<IEventBaseSubcriber>();
+        List<IEventSubcriber> subcribers = new List<IEventSubcriber>();
         // get list of subcriber of triggeredEvent
         _eventSubscribers.TryGetValue(typeof(Event), out subcribers);
 
@@ -88,7 +88,7 @@ public static class EventBus
             return;
         }
 
-        foreach (IEventBaseSubcriber baseSubcriber in subcribers)
+        foreach (IEventSubcriber baseSubcriber in subcribers)
         {
             IEventSubcriber<Event> subcriber = baseSubcriber as IEventSubcriber<Event>;
             if(subcriber != null)
@@ -120,12 +120,12 @@ public static class EventBusRegister
 /// <summary>
 /// Event subcriber interface
 /// </summary>
-public interface IEventBaseSubcriber { };
+public interface IEventSubcriber { };
 
 /// <summary>
 /// Interface for each event to subcribe.
 /// </summary>
-public interface IEventSubcriber<T> : IEventBaseSubcriber
+public interface IEventSubcriber<T> : IEventSubcriber
 {
     void OnEventBusTrigger(T eventType);
 }
