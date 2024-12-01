@@ -10,6 +10,6 @@ public class FruitBasketInteraction : AC.Interaction
     {
         base.Interact();
         Debug.Log("FruitBasketInteraction");
-        FruitBasket.TryTurnOnAllHotspot();
+       // FruitBasket.TryTurnOnAllHotspot();
     }
 }

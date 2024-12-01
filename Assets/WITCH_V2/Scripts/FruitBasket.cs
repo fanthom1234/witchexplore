@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class FruitBasket : CaravanObject, IEventSubcriber<InventoryFruitChanged>
 {
-    [SerializeField] FruitCakeIngredient[] HoldableFruits;
-    [SerializeField] Inventory Inventory => Inventory.Instance;
+    [SerializeField] FruitKitchenButtonPanel[] FruitKitchenButtonPanels;
+    
+    Inventory Inventory => Inventory.Instance;
 
     protected override void OnObjectEnabled()
     {
@@ -27,27 +28,27 @@ public class FruitBasket : CaravanObject, IEventSubcriber<InventoryFruitChanged>
 
     private void EvaluateFruitInBasket()
     {
-        for (int i = 0; i < HoldableFruits.Length; i++)
+        for (int i = 0; i < FruitKitchenButtonPanels.Length; i++)
         {
-            FruitCakeIngredient fruitObject = HoldableFruits[i];
-            if (i >= Inventory.FruitsInBasket.Count)
+            if (Inventory.FruitsInBasket[i].Count > 0)
             {
-                fruitObject.SetFruitData(null);
+                FruitKitchenButtonPanels[i].gameObject.SetActive(true);
+                FruitKitchenButtonPanels[i].SetFruit(Inventory.FruitsInBasket[i]);
             }
             else
             {
-                fruitObject.SetFruitData(Inventory.FruitsInBasket[i]);
+                FruitKitchenButtonPanels[i].gameObject.SetActive(false);
             }
         }
     }
 
-    public void TryTurnOnAllHotspot()
-    {
-        foreach (FruitCakeIngredient fruit in HoldableFruits)
-        {
-            fruit.TryTurnOnHotspot();
-        }
-    }
+    //public void TryTurnOnAllHotspot()
+    //{
+    //    foreach (FruitCakeIngredient fruit in HoldableFruits)
+    //    {
+    //        fruit.TryTurnOnHotspot();
+    //    }
+    //}
 
     public void OnEventBusTrigger(InventoryFruitChanged eventType)
     {
