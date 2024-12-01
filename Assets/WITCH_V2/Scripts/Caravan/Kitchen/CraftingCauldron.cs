@@ -168,13 +168,14 @@ public class CraftingCauldron : CaravanObject, IEventSubcriber<IngredientToCauld
     private void OnCraftingFail()
     {
         ResultCakeRenderer.sprite = null;
-        Animation.Play(FailAnimClip.name);
+        //Animation.Play(FailAnimClip.name);
+        EventBus.TriggerEvent(new CakeCraftedEvent(null));
     }
 
     private void OnCraftingSuccess(CakeRecipeData getCake)
     {
         ResultCakeRenderer.sprite = getCake.ResultBaseCake.CakeSprite;
-        _inventory.AddBaseCake(getCake.ResultBaseCake);
+        //_inventory.AddBaseCake(getCake.ResultBaseCake);
         EventBus.TriggerEvent(new CakeCraftedEvent(getCake.ResultBaseCake));
     }
 

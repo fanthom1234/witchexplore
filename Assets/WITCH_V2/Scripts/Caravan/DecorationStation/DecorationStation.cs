@@ -57,9 +57,12 @@ public class DecorationStation : CaravanObject, IEventSubcriber<CakeCraftedEvent
 
     public void OnEventBusTrigger(CakeCraftedEvent eventType)
     {
-        _workingCake = eventType.Result;
-        WorkingOnCake.enabled = true;
-        WorkingOnCake.sprite = eventType.Result.CakeSprite;
+        if (eventType.Result)
+        {
+            _workingCake = eventType.Result;
+            WorkingOnCake.enabled = true;
+            WorkingOnCake.sprite = eventType.Result.CakeSprite;
+        }
     }
 
     public void OnEventBusTrigger(CakeSellEvent eventType)
